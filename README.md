@@ -82,6 +82,29 @@ agents dropdown; in OpenCode/Cursor type `@code-reviewer`. Same agent, every too
 
 ---
 
+## ⚡ Spawn any team
+
+Copy-paste a command — each spawns the whole team into **Claude Code**. Add `--target=vscode`
+(or `codex`, `opencode`, `cursor`, `pi`) for another tool, and `--project` to install into the current repo.
+
+| # | Team | Command |
+|---|------|---------|
+| 1 | 🏛️ Architecture Guild | `npx github:hlsitechio/agentic-swarm spawn architecture` |
+| 2 | ⚙️ Backend Squad | `npx github:hlsitechio/agentic-swarm spawn backend` |
+| 3 | 🎨 Frontend Squad | `npx github:hlsitechio/agentic-swarm spawn frontend` |
+| 4 | 🔤 Language Pros | `npx github:hlsitechio/agentic-swarm spawn languages` |
+| 5 | ✅ Quality Crew | `npx github:hlsitechio/agentic-swarm spawn quality` |
+| 6 | 🔐 Security Team | `npx github:hlsitechio/agentic-swarm spawn security` |
+| 7 | 🚀 DevOps & SRE | `npx github:hlsitechio/agentic-swarm spawn devops` |
+| 8 | 🧠 Data & AI | `npx github:hlsitechio/agentic-swarm spawn data-ai` |
+| 9 | 📋 Product & Docs | `npx github:hlsitechio/agentic-swarm spawn product-docs` |
+| 10 | 🧩 Specialists | `npx github:hlsitechio/agentic-swarm spawn specialists` |
+
+> **Prefer numbers?** `npx … spawn 1` … `spawn 10` work identically. Spawn several at once: `spawn 2 6`.
+> **Spawn everything** (all 60 agents): `npx … spawn architecture backend frontend languages quality security devops data-ai product-docs specialists`
+
+---
+
 ## 🧩 Supported tools
 
 Pick where agents land with `--target` (default: `claude`). Use `--project` for the current repo or
