@@ -250,13 +250,15 @@ function cmdAdd(positional, teams, characters, flags, order) {
     const dir = t.dir(project, flags.out);
     console.log(`\n${bold(t.label)} ${dim("→ " + dir)} ${flags.dryRun ? yellow("[dry-run]") : ""}`);
     let wrote = 0;
+    let skipped = 0;
     for (const slug of slugs) {
       const ch = loadCharacter(slug);
       if (!ch) continue;
       const dest = path.join(dir, slug + t.ext);
       const exists = fs.existsSync(dest);
       if (exists && !flags.force) {
-        console.log(`  ${yellow("skip")} ${slug}${t.ext} ${dim("(exists — use --force)")}`);
+        console.log(`  ${dim("✓ ready")} ${slug}${t.ext} ${dim("(already installed)")}`);
+        skipped++;
         continue;
       }
       if (!flags.dryRun) {
@@ -266,7 +268,16 @@ function cmdAdd(positional, teams, characters, flags, order) {
       console.log(`  ${green(exists ? "overwrite" : "add ")} ${cyan(slug + t.ext)}  ${dim("invoke: " + t.invoke(slug))}`);
       wrote++;
     }
-    console.log(dim(`  ${wrote} installed for ${t.label}.`));
+    // Clear summary: distinguish "freshly installed" from "already provisioned".
+    if (wrote && skipped) {
+      console.log(green(`  ✓ ${wrote} installed, ${skipped} already present — ${wrote + skipped} agents ready for ${t.label}.`));
+    } else if (wrote) {
+      console.log(green(`  ✓ ${wrote} installed for ${t.label}.`));
+    } else if (skipped) {
+      console.log(green(`  ✓ all ${skipped} already installed — ready to use for ${t.label}.`) + dim("  (use --force to update)"));
+    } else {
+      console.log(dim(`  nothing to do for ${t.label}.`));
+    }
     if (target === "claude" && !flags.dryRun && wrote) {
       console.log(dim("  ↳ restart Claude Code (or use /agents) to load new agents."));
     }
