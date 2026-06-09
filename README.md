@@ -1,5 +1,7 @@
 <div align="center">
 
+<img src="assets/banner.png" alt="Agentic Swarm — AI Agents. United Intelligence." width="100%">
+
 # 🐝 Agentic Swarm
 
 ### Write your AI coding agents **once**. Deploy them into **any** tool in seconds.
