@@ -17,7 +17,7 @@
     "LICENSE"
   ],
   "scripts": {
-    "build": "python scripts/add_frontmatter.py && python scripts/build_teams.py",
+    "build": "python scripts/generate.py",
     "start": "node bin/cli.js"
   },
   "keywords": [

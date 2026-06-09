@@ -206,11 +206,12 @@ function ensureScope(target, flags) {
   if (t.globalOnly && flags.project) {
     console.log(yellow(`  note: ${t.label} only supports global install; using global scope.`));
   }
-  // project unless: globalOnly target, or no --project given and target isn't projectOnly
+  // Scope resolution. --global wins if both --global and --project are passed.
   let project;
   if (t.globalOnly) project = false;
   else if (t.projectOnly) project = true;
-  else project = flags.project && !flags.global ? true : flags.project;
+  else if (flags.global) project = false;
+  else project = flags.project;
   return project;
 }
 
@@ -225,10 +226,12 @@ function cmdAdd(positional, teams, characters, flags) {
     process.exit(1);
   }
 
+  let hadError = unknown.length > 0;
   for (const target of flags.targets) {
     const t = TARGETS[target];
     if (!t) {
       console.log(red(`  unknown target '${target}' (valid: ${Object.keys(TARGETS).join(", ")})`));
+      hadError = true;
       continue;
     }
     const project = ensureScope(target, flags);
@@ -257,14 +260,20 @@ function cmdAdd(positional, teams, characters, flags) {
     }
   }
   console.log();
+  if (hadError) process.exit(1);
 }
 
 function cmdRemove(positional, teams, characters, flags) {
   const { slugs, unknown } = resolveSlugs(positional, teams, characters);
   if (unknown.length) console.log(red(`  unknown: ${unknown.join(", ")}`));
+  let hadError = unknown.length > 0;
   for (const target of flags.targets) {
     const t = TARGETS[target];
-    if (!t) continue;
+    if (!t) {
+      console.log(red(`  unknown target '${target}' (valid: ${Object.keys(TARGETS).join(", ")})`));
+      hadError = true;
+      continue;
+    }
     const project = ensureScope(target, flags);
     const dir = t.dir(project, flags.out);
     console.log(`\n${bold(t.label)} ${dim("→ " + dir)} ${flags.dryRun ? yellow("[dry-run]") : ""}`);
@@ -279,6 +288,7 @@ function cmdRemove(positional, teams, characters, flags) {
     }
   }
   console.log();
+  if (hadError) process.exit(1);
 }
 
 function help() {
