@@ -1,0 +1,12 @@
+{
+  "id": "avengers",
+  "emoji": "🦸",
+  "name": "The Avengers",
+  "tagline": "Earth's mightiest engineers",
+  "members": [
+    "tony-stark",
+    "thor",
+    "hulk",
+    "thanos"
+  ]
+}

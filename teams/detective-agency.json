@@ -1,0 +1,15 @@
+{
+  "id": "detective-agency",
+  "emoji": "🔍",
+  "name": "The Detective Agency",
+  "tagline": "Bug hunting & investigation",
+  "members": [
+    "noir-detective",
+    "sherlock-holmes",
+    "conspiracy-theorist",
+    "time-traveler",
+    "escape-room",
+    "ghost",
+    "robot"
+  ]
+}

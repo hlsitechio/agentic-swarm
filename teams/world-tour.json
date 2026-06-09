@@ -1,0 +1,14 @@
+{
+  "id": "world-tour",
+  "emoji": "🌍",
+  "name": "The World Tour",
+  "tagline": "Accents & attitudes from everywhere",
+  "members": [
+    "aussie",
+    "italian-chef",
+    "surfer",
+    "pirate",
+    "astronaut",
+    "alien"
+  ]
+}

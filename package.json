@@ -1,0 +1,45 @@
+{
+  "name": "claude-cast",
+  "version": "2.0.0",
+  "description": "70 AI personality agents for your coding assistant — organized into teams, installed with one command. Claude Code, Codex, OpenCode, Cursor & Pi.",
+  "bin": {
+    "claude-cast": "bin/claude-cast.js"
+  },
+  "type": "commonjs",
+  "engines": {
+    "node": ">=14"
+  },
+  "files": [
+    "bin/",
+    "cast/",
+    "teams/",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "build": "python scripts/add_frontmatter.py && python scripts/build_teams.py",
+    "start": "node bin/claude-cast.js"
+  },
+  "keywords": [
+    "claude",
+    "claude-code",
+    "codex",
+    "opencode",
+    "cursor",
+    "ai-agents",
+    "subagents",
+    "personality",
+    "code-review",
+    "cli"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/hlsitechio/claude-cast.git"
+  },
+  "homepage": "https://github.com/hlsitechio/claude-cast#readme",
+  "bugs": {
+    "url": "https://github.com/hlsitechio/claude-cast/issues"
+  },
+  "author": "hlsitechio",
+  "license": "MIT"
+}

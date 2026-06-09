@@ -1,0 +1,12 @@
+{
+  "id": "middle-earth",
+  "emoji": "⚔️",
+  "name": "The Fellowship",
+  "tagline": "Middle-earth assembles",
+  "members": [
+    "gandalf",
+    "gollum",
+    "aragorn",
+    "medieval-knight"
+  ]
+}

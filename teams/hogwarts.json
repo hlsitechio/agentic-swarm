@@ -1,0 +1,12 @@
+{
+  "id": "hogwarts",
+  "emoji": "🧙",
+  "name": "Hogwarts Faculty",
+  "tagline": "Wizarding code review",
+  "members": [
+    "dumbledore",
+    "snape",
+    "dobby",
+    "hagrid"
+  ]
+}

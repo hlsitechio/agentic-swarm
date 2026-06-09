@@ -1,0 +1,12 @@
+{
+  "id": "westeros",
+  "emoji": "🐉",
+  "name": "The Westeros Court",
+  "tagline": "Code is coming",
+  "members": [
+    "tyrion",
+    "hodor",
+    "the-hound",
+    "jon-snow"
+  ]
+}

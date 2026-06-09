@@ -1,0 +1,12 @@
+{
+  "id": "galactic-order",
+  "emoji": "🌌",
+  "name": "The Galactic Order",
+  "tagline": "A galaxy far, far away",
+  "members": [
+    "darth-vader",
+    "obi-wan",
+    "c3po",
+    "yoda"
+  ]
+}
