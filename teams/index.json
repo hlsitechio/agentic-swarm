@@ -1,0 +1,74 @@
+{
+  "teams": [
+    {
+      "id": "architecture",
+      "emoji": "🏛️",
+      "name": "Architecture Guild",
+      "tagline": "Design systems, APIs & boundaries",
+      "size": 6
+    },
+    {
+      "id": "backend",
+      "emoji": "⚙️",
+      "name": "Backend Squad",
+      "tagline": "Server-side services & data",
+      "size": 6
+    },
+    {
+      "id": "frontend",
+      "emoji": "🎨",
+      "name": "Frontend Squad",
+      "tagline": "UI, client logic & UX delivery",
+      "size": 6
+    },
+    {
+      "id": "languages",
+      "emoji": "🔤",
+      "name": "Language Pros",
+      "tagline": "Deep per-language expertise",
+      "size": 6
+    },
+    {
+      "id": "quality",
+      "emoji": "✅",
+      "name": "Quality Crew",
+      "tagline": "Correctness, tests & performance",
+      "size": 6
+    },
+    {
+      "id": "security",
+      "emoji": "🔐",
+      "name": "Security Team",
+      "tagline": "AppSec, offense & supply chain",
+      "size": 6
+    },
+    {
+      "id": "devops",
+      "emoji": "🚀",
+      "name": "DevOps & SRE",
+      "tagline": "Ship, scale & operate",
+      "size": 6
+    },
+    {
+      "id": "data-ai",
+      "emoji": "🧠",
+      "name": "Data & AI",
+      "tagline": "Pipelines, models & LLM apps",
+      "size": 6
+    },
+    {
+      "id": "product-docs",
+      "emoji": "📋",
+      "name": "Product & Docs",
+      "tagline": "Plan, document & communicate",
+      "size": 6
+    },
+    {
+      "id": "specialists",
+      "emoji": "🧩",
+      "name": "Specialists",
+      "tagline": "Targeted, high-leverage expertise",
+      "size": 6
+    }
+  ]
+}

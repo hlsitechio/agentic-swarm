@@ -1,0 +1,14 @@
+{
+  "id": "product-docs",
+  "emoji": "📋",
+  "name": "Product & Docs",
+  "tagline": "Plan, document & communicate",
+  "members": [
+    "product-manager",
+    "technical-writer",
+    "ux-researcher",
+    "api-documenter",
+    "release-manager",
+    "project-planner"
+  ]
+}

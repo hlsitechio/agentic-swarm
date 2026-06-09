@@ -1,0 +1,47 @@
+{
+  "name": "agentic-swarm",
+  "version": "2.0.0",
+  "description": "Write your agents once, deploy anywhere. 60 specialist software-engineering AI agents in 10 teams, installed with one command into Claude Code, VS Code, Codex, OpenCode, Cursor & Pi.",
+  "bin": {
+    "agentic-swarm": "bin/cli.js"
+  },
+  "type": "commonjs",
+  "engines": {
+    "node": ">=14"
+  },
+  "files": [
+    "bin/",
+    "agents/",
+    "teams/",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "build": "python scripts/add_frontmatter.py && python scripts/build_teams.py",
+    "start": "node bin/cli.js"
+  },
+  "keywords": [
+    "ai-agents",
+    "agent-swarm",
+    "agentic",
+    "claude-code",
+    "vscode",
+    "copilot",
+    "codex",
+    "opencode",
+    "cursor",
+    "subagents",
+    "code-review",
+    "cli"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/hlsitechio/agentic-swarm.git"
+  },
+  "homepage": "https://github.com/hlsitechio/agentic-swarm#readme",
+  "bugs": {
+    "url": "https://github.com/hlsitechio/agentic-swarm/issues"
+  },
+  "author": "hlsitechio",
+  "license": "MIT"
+}

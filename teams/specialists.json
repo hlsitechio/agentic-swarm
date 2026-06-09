@@ -1,0 +1,14 @@
+{
+  "id": "specialists",
+  "emoji": "🧩",
+  "name": "Specialists",
+  "tagline": "Targeted, high-leverage expertise",
+  "members": [
+    "migration-specialist",
+    "legacy-modernizer",
+    "payments-engineer",
+    "search-engineer",
+    "i18n-engineer",
+    "seo-engineer"
+  ]
+}

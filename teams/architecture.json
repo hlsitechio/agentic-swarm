@@ -1,0 +1,14 @@
+{
+  "id": "architecture",
+  "emoji": "🏛️",
+  "name": "Architecture Guild",
+  "tagline": "Design systems, APIs & boundaries",
+  "members": [
+    "solution-architect",
+    "api-designer",
+    "domain-modeler",
+    "cloud-architect",
+    "tech-lead",
+    "integration-architect"
+  ]
+}
