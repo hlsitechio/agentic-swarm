@@ -162,13 +162,18 @@ function parseArgs(argv) {
   return { flags, positional };
 }
 
-/** Resolve a list of names (teams and/or characters) into a unique slug list. */
-function resolveSlugs(names, teams, characters) {
+/** Resolve a list of names (team ids, team numbers, or agents) into a unique slug list. */
+function resolveSlugs(names, teams, characters, order = []) {
   const set = new Set();
   const unknown = [];
   for (const name of names) {
-    const key = name.toLowerCase();
-    if (teams[key]) teams[key].members.forEach((m) => set.add(m));
+    const key = String(name).toLowerCase();
+    if (/^\d+$/.test(key)) {
+      // Numeric shortcut: spawn team #N (1-based, in the order shown by `list`).
+      const id = order[parseInt(key, 10) - 1];
+      if (id && teams[id]) teams[id].members.forEach((m) => set.add(m));
+      else unknown.push(name);
+    } else if (teams[key]) teams[key].members.forEach((m) => set.add(m));
     else if (characters.includes(key)) set.add(key);
     else unknown.push(name);
   }
@@ -176,26 +181,33 @@ function resolveSlugs(names, teams, characters) {
 }
 
 // ── commands ───────────────────────────────────────────────────────────────
-function cmdList(positional, teams) {
+function cmdList(positional, teams, order) {
   const arg = positional[0];
-  if (arg && teams[arg.toLowerCase()]) {
-    const t = teams[arg.toLowerCase()];
-    console.log(`\n${t.emoji}  ${bold(t.name)}  ${dim("(" + t.id + ")")}`);
+  // Allow `list <number>` too.
+  let lookupId = arg ? arg.toLowerCase() : null;
+  if (lookupId && /^\d+$/.test(lookupId)) lookupId = order[parseInt(lookupId, 10) - 1];
+  if (lookupId && teams[lookupId]) {
+    const t = teams[lookupId];
+    const n = order.indexOf(t.id) + 1;
+    console.log(`\n${t.emoji}  ${bold(t.name)}  ${dim("(#" + n + " · " + t.id + ")")}`);
     console.log(`   ${dim(t.tagline)}\n`);
     for (const slug of t.members) {
       const ch = loadCharacter(slug);
       console.log(`   ${cyan(slug.padEnd(20))} ${dim(ch ? ch.description : "")}`);
     }
-    console.log();
+    console.log(`\n   ${dim("spawn this team:")} npx github:hlsitechio/agentic-swarm spawn ${n}   ${dim("(or " + t.id + ")")}\n`);
     return;
   }
-  console.log(`\n${bold("🐝 Agentic Swarm — teams")}  ${dim("(npx github:hlsitechio/agentic-swarm add <team>)")}\n`);
-  for (const t of Object.values(teams)) {
-    console.log(`  ${t.emoji}  ${cyan(t.id.padEnd(18))} ${bold(t.name.padEnd(22))} ${dim(t.tagline)} ${dim("· " + t.members.length)}`);
-  }
-  console.log(`\n  ${dim("List a team's agents:  ")} npx github:hlsitechio/agentic-swarm list security`);
-  console.log(`  ${dim("Install a team:       ")} npx github:hlsitechio/agentic-swarm add security`);
-  console.log(`  ${dim("Install one agent:    ")} npx github:hlsitechio/agentic-swarm add code-reviewer\n`);
+  console.log(`\n${bold("🐝 Agentic Swarm — teams")}  ${dim("(npx github:hlsitechio/agentic-swarm spawn <#|team>)")}\n`);
+  order.forEach((id, i) => {
+    const t = teams[id];
+    if (!t) return;
+    console.log(`  ${bold(String(i + 1).padStart(2))}  ${t.emoji}  ${cyan(t.id.padEnd(15))} ${bold(t.name.padEnd(22))} ${dim(t.tagline)} ${dim("· " + t.members.length)}`);
+  });
+  console.log(`\n  ${dim("Spawn a team by number: ")} npx github:hlsitechio/agentic-swarm spawn 1`);
+  console.log(`  ${dim("Spawn a team by name:   ")} npx github:hlsitechio/agentic-swarm spawn security`);
+  console.log(`  ${dim("Spawn one agent:        ")} npx github:hlsitechio/agentic-swarm spawn code-reviewer`);
+  console.log(`  ${dim("See a team's agents:    ")} npx github:hlsitechio/agentic-swarm list 1\n`);
 }
 
 function ensureScope(target, flags) {
@@ -215,8 +227,8 @@ function ensureScope(target, flags) {
   return project;
 }
 
-function cmdAdd(positional, teams, characters, flags) {
-  const { slugs, unknown } = resolveSlugs(positional, teams, characters);
+function cmdAdd(positional, teams, characters, flags, order) {
+  const { slugs, unknown } = resolveSlugs(positional, teams, characters, order);
   if (unknown.length) {
     console.log(red(`  unknown: ${unknown.join(", ")}`));
     console.log(dim("  run 'list' to see available teams and agents."));
@@ -263,8 +275,8 @@ function cmdAdd(positional, teams, characters, flags) {
   if (hadError) process.exit(1);
 }
 
-function cmdRemove(positional, teams, characters, flags) {
-  const { slugs, unknown } = resolveSlugs(positional, teams, characters);
+function cmdRemove(positional, teams, characters, flags, order) {
+  const { slugs, unknown } = resolveSlugs(positional, teams, characters, order);
   if (unknown.length) console.log(red(`  unknown: ${unknown.join(", ")}`));
   let hadError = unknown.length > 0;
   for (const target of flags.targets) {
@@ -293,17 +305,19 @@ function cmdRemove(positional, teams, characters, flags) {
 
 function help() {
   console.log(`
-${bold("🐝 agentic-swarm")} — install AI personality agents into your coding assistant.
+${bold("🐝 agentic-swarm")} — spawn specialist agent teams into your coding assistant.
 
 ${bold("Usage")}
   npx github:hlsitechio/agentic-swarm <command> [names...] [flags]
 
 ${bold("Commands")}
-  list [team]            List all teams, or one team's agents
-  add  <name...>         Install agent(s) and/or whole team(s)
-  remove <name...>       Uninstall agent(s)/team(s)
-  <team|agent> [flags]   Shorthand for "add <team|agent>"
+  list [team|#]          List all teams (numbered), or one team's agents
+  spawn <#|team|agent>   Deploy team(s)/agent(s) — by number, name, or both
+  remove <#|team|agent>  Remove team(s)/agent(s)
+  <#|team|agent> [flags] Shorthand: the name/number IS the command (= spawn)
   help                   Show this help
+
+  ${dim("(add = spawn, despawn = remove)")}
 
 ${bold("Flags")}
   --target=<t[,t...]>    ${dim("claude (default), vscode, codex, opencode, cursor, pi, generic")}
@@ -314,35 +328,48 @@ ${bold("Flags")}
   --dry-run              ${dim("Preview without writing")}
 
 ${bold("Examples")}
-  npx github:hlsitechio/agentic-swarm list
-  npx github:hlsitechio/agentic-swarm add security
-  npx github:hlsitechio/agentic-swarm backend            # shorthand: team name = command
-  npx github:hlsitechio/agentic-swarm add code-reviewer debugger --target=opencode
-  npx github:hlsitechio/agentic-swarm add backend --target=claude,cursor --project
-  npx github:hlsitechio/agentic-swarm remove data-ai
+  npx github:hlsitechio/agentic-swarm list                 # numbered team list
+  npx github:hlsitechio/agentic-swarm spawn 1               # spawn team #1
+  npx github:hlsitechio/agentic-swarm spawn security        # spawn by name
+  npx github:hlsitechio/agentic-swarm 6                     # shorthand: spawn team #6
+  npx github:hlsitechio/agentic-swarm spawn 2 6 --target=vscode --project
+  npx github:hlsitechio/agentic-swarm spawn code-reviewer --target=opencode
 `);
 }
 
 // ── main ─────────────────────────────────────────────────────────────────--
+function teamOrder() {
+  try {
+    const idx = JSON.parse(fs.readFileSync(path.join(TEAMS_DIR, "index.json"), "utf8"));
+    return idx.teams.map((t) => t.id);
+  } catch {
+    return [];
+  }
+}
+
 function main() {
   const [, , cmd, ...rest] = process.argv;
   const { flags, positional } = parseArgs(rest);
   const teams = loadTeams();
   const characters = listCharacters();
+  const order = teamOrder();
 
   switch (cmd) {
     case "list":
     case "ls":
-      cmdList(positional, teams);
+      cmdList(positional, teams, order);
       break;
     case "add":
     case "install":
-      cmdAdd(positional, teams, characters, flags);
+    case "spawn":
+    case "deploy":
+      cmdAdd(positional, teams, characters, flags, order);
       break;
     case "remove":
     case "rm":
     case "uninstall":
-      cmdRemove(positional, teams, characters, flags);
+    case "despawn":
+      cmdRemove(positional, teams, characters, flags, order);
       break;
     case "help":
     case "--help":
@@ -357,12 +384,14 @@ function main() {
       break;
     }
     default: {
-      // Shorthand: a team or agent name used directly IS the command.
-      //   npx … backend            → add backend
-      //   npx … security --project → add security --project
+      // Shorthand: a team name, team number, or agent name used directly IS the command.
+      //   npx … backend   → spawn backend
+      //   npx … 1         → spawn team #1
+      //   npx … security --project
       const key = cmd.toLowerCase();
-      if (teams[key] || characters.includes(key)) {
-        cmdAdd([cmd, ...positional], teams, characters, flags);
+      const isNumber = /^\d+$/.test(key) && order[parseInt(key, 10) - 1];
+      if (isNumber || teams[key] || characters.includes(key)) {
+        cmdAdd([cmd, ...positional], teams, characters, flags, order);
         break;
       }
       console.log(red(`unknown command: ${cmd}`));

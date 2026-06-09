@@ -42,7 +42,7 @@ teammate — your whole swarm comes with you.
 
 | | Without Agentic Swarm | With Agentic Swarm |
 |---|---|---|
-| New tool | Recreate every agent by hand | `npx … add <team>` — done |
+| New tool | Recreate every agent by hand | `npx … spawn 6` — done |
 | Formats | Learn each tool's frontmatter & paths | Handled for you |
 | Sharing | "Here, copy-paste these prompts" | One command |
 | Source of truth | Scattered across machines | One repo |
@@ -52,17 +52,19 @@ teammate — your whole swarm comes with you.
 ## 🚀 Quick start
 
 ```bash
-# 1. See what's available
+# 1. See the numbered team list
 npx github:hlsitechio/agentic-swarm list
 
-# 2. Deploy a whole team into Claude Code (the default)
-npx github:hlsitechio/agentic-swarm add backend
+# 2. Spawn a team — by number or name (into Claude Code, the default)
+npx github:hlsitechio/agentic-swarm spawn 6          # → security team
+npx github:hlsitechio/agentic-swarm spawn backend    # → by name
 
-# 3. Or grab one agent — for any tool
-npx github:hlsitechio/agentic-swarm add code-reviewer --target=vscode --project
+# 3. Spawn into any tool, or just one agent
+npx github:hlsitechio/agentic-swarm spawn 3 --target=vscode --project
+npx github:hlsitechio/agentic-swarm spawn code-reviewer
 
-# Shortcut: the team name is itself a command
-npx github:hlsitechio/agentic-swarm security
+# Shortcut: the number/name IS the command
+npx github:hlsitechio/agentic-swarm 6
 ```
 
 Then invoke it: in Claude Code say *“use the code-reviewer agent”*; in VS Code pick it from the Chat
@@ -97,7 +99,7 @@ Pick where agents land with `--target` (default: `claude`). Use `--project` for 
 
 ```bash
 # Deploy the same team into several tools at once:
-npx github:hlsitechio/agentic-swarm add security --target=claude,vscode,codex,opencode
+npx github:hlsitechio/agentic-swarm spawn security --target=claude,vscode,codex,opencode
 ```
 
 ---
@@ -105,7 +107,7 @@ npx github:hlsitechio/agentic-swarm add security --target=claude,vscode,codex,op
 ## 👥 The roster — 60 agents in 10 teams
 
 Deploy a **team** to cover a domain end-to-end, or a single **agent** for a precise task.
-Run `list <team>` to see each agent's description.
+Run `list <team|#>` to see each agent's description.
 
 <table>
 <tr><td valign="top" width="50%">
@@ -153,11 +155,12 @@ Run `list <team>` to see each agent's description.
 npx github:hlsitechio/agentic-swarm <command> [names...] [flags]
 
 Commands
-  list [team]          List all teams, or one team's agents
-  add  <name...>       Install agent(s) and/or whole team(s)
-  remove <name...>     Uninstall agent(s)/team(s)
-  <team|agent>         Shorthand for "add <team|agent>"  (e.g. `… backend`)
+  list [team|#]        List all teams (numbered), or one team's agents
+  spawn <#|team|agent> Deploy team(s)/agent(s) — by number, name, or both
+  remove <#|team|agent> Remove team(s)/agent(s)
+  <#|team|agent>       Shorthand: the number/name IS the command (= spawn)
   help                 Show help
+                       (add = spawn, despawn = remove)
 
 Flags
   --target=<t[,t...]>  claude (default), vscode, codex, opencode, cursor, pi, generic
@@ -172,8 +175,8 @@ Flags
 
 ```bash
 npx github:hlsitechio/agentic-swarm list security
-npx github:hlsitechio/agentic-swarm add quality --target=vscode --project
-npx github:hlsitechio/agentic-swarm add python-pro typescript-pro --target=opencode
+npx github:hlsitechio/agentic-swarm spawn quality --target=vscode --project
+npx github:hlsitechio/agentic-swarm spawn python-pro typescript-pro --target=opencode
 npx github:hlsitechio/agentic-swarm remove data-ai
 ```
 
