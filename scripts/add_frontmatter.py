@@ -10,7 +10,7 @@ from __future__ import annotations
 import pathlib
 import sys
 
-CAST = pathlib.Path(__file__).resolve().parent.parent / "cast"
+CAST = pathlib.Path(__file__).resolve().parent.parent / "agents"
 
 # slug -> one-line description used for Claude Code auto-delegation.
 DESCRIPTIONS: dict[str, str] = {

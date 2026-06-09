@@ -11,7 +11,7 @@ import pathlib
 import sys
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
-CAST = ROOT / "cast"
+CAST = ROOT / "agents"
 TEAMS_DIR = ROOT / "teams"
 
 # id -> (emoji, display name, tagline, [member slugs])

@@ -1,9 +1,9 @@
 {
-  "name": "claude-cast",
+  "name": "agentic-swarm",
   "version": "2.0.0",
-  "description": "70 AI personality agents for your coding assistant — organized into teams, installed with one command. Claude Code, Codex, OpenCode, Cursor & Pi.",
+  "description": "Deployable swarms of specialist AI agents — organized into teams, installed with one command. Claude Code, Codex, OpenCode, Cursor & Pi.",
   "bin": {
-    "claude-cast": "bin/claude-cast.js"
+    "agentic-swarm": "bin/cli.js"
   },
   "type": "commonjs",
   "engines": {
@@ -11,34 +11,34 @@
   },
   "files": [
     "bin/",
-    "cast/",
+    "agents/",
     "teams/",
     "README.md",
     "LICENSE"
   ],
   "scripts": {
     "build": "python scripts/add_frontmatter.py && python scripts/build_teams.py",
-    "start": "node bin/claude-cast.js"
+    "start": "node bin/cli.js"
   },
   "keywords": [
-    "claude",
+    "ai-agents",
+    "agent-swarm",
+    "agentic",
     "claude-code",
     "codex",
     "opencode",
     "cursor",
-    "ai-agents",
     "subagents",
-    "personality",
     "code-review",
     "cli"
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/hlsitechio/claude-cast.git"
+    "url": "https://github.com/hlsitechio/agentic-swarm.git"
   },
-  "homepage": "https://github.com/hlsitechio/claude-cast#readme",
+  "homepage": "https://github.com/hlsitechio/agentic-swarm#readme",
   "bugs": {
-    "url": "https://github.com/hlsitechio/claude-cast/issues"
+    "url": "https://github.com/hlsitechio/agentic-swarm/issues"
   },
   "author": "hlsitechio",
   "license": "MIT"

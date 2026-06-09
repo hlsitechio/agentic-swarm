@@ -1,19 +1,18 @@
 <div align="center">
 
-# 🎭 Claude Cast
+# 🐝 Agentic Swarm
 
-### 70 AI personality agents — organized into teams, installed with one command.
+### Deployable swarms of specialist AI agents — organized into teams, installed with one command.
 
-**Give your AI a character. Pick a team. Make coding fun.**
+**Pick a team. Run one command. Your coding assistant gains a whole squad of specialists.**
 
 [![Claude Code](https://img.shields.io/badge/Claude_Code-Compatible-blueviolet?style=flat-square&logo=anthropic)](https://code.claude.com)
 [![Codex](https://img.shields.io/badge/Codex-Compatible-black?style=flat-square&logo=openai)](https://developers.openai.com/codex)
 [![OpenCode](https://img.shields.io/badge/OpenCode-Compatible-00bcd4?style=flat-square)](https://opencode.ai)
 [![Cursor](https://img.shields.io/badge/Cursor-Compatible-blue?style=flat-square)](https://cursor.com)
-[![Personalities](https://img.shields.io/badge/Personalities-70-orange?style=flat-square)]()
+[![Agents](https://img.shields.io/badge/Agents-70-orange?style=flat-square)]()
+[![Teams](https://img.shields.io/badge/Teams-15-success?style=flat-square)]()
 [![License](https://img.shields.io/badge/License-MIT-yellow?style=flat-square)]()
-
-*"This function is RAWWW!" — Gordon Ramsay reviewing your code*
 
 </div>
 
@@ -21,57 +20,57 @@
 
 ## What is this?
 
-70 personality agents that make your AI coding assistant talk like your favorite characters.
-Gordon Ramsay reviews your code. Gandalf blocks your bad PRs. Snape roasts your null pointers.
+**Agentic Swarm** is a library of **70 specialist AI agents**, sorted into **15 teams (swarms)**,
+that you install into your coding assistant with **one command** — no cloning, no copy-paste.
 
-The new part: they're sorted into **teams**, and you install a whole team — or a single
-character — into your assistant with **one command**. No cloning, no copy-paste.
+Each agent has a distinct voice and a focus: a brutal code reviewer, a calm architect, a relentless
+bug hunter, a hype coach. Deploy a whole **swarm** when you want a job covered from every angle, or
+drop in a single agent when you want one voice.
 
-**Every persona is technically accurate.** The code advice is real. The delivery is entertainment.
+**Every agent is technically accurate.** The advice is real engineering. The delivery has character.
 
 ## ⚡ Quick start
 
 ```bash
-# Browse the teams
-npx github:hlsitechio/claude-cast list
+# Browse the swarms
+npx github:hlsitechio/agentic-swarm list
 
-# Install a whole team into Claude Code (global)
-npx github:hlsitechio/claude-cast add roast-squad
+# Deploy a whole team into Claude Code (global)
+npx github:hlsitechio/agentic-swarm add roast-squad
 
-# Install one character
-npx github:hlsitechio/claude-cast add gandalf
+# Or a single agent
+npx github:hlsitechio/agentic-swarm add gandalf
 ```
 
-Then in Claude Code, just say *"Use the gordon-ramsay agent to review this PR"* — or let it
-auto-delegate. That's it. 🎉
+Then in Claude Code, say *"Use the gordon-ramsay agent to review this PR"* — or let it auto-delegate. ✅
 
-> No Node? Use the one-line installer (Claude Code, macOS/Linux):
+> **No Node?** One-line installer (Claude Code, macOS/Linux):
 > ```bash
-> curl -fsSL https://raw.githubusercontent.com/hlsitechio/claude-cast/main/install.sh | sh -s roast-squad
+> curl -fsSL https://raw.githubusercontent.com/hlsitechio/agentic-swarm/main/install.sh | sh -s roast-squad
 > ```
 > Windows PowerShell:
 > ```powershell
-> irm https://raw.githubusercontent.com/hlsitechio/claude-cast/main/install.ps1 | iex; Install-ClaudeCast roast-squad
+> irm https://raw.githubusercontent.com/hlsitechio/agentic-swarm/main/install.ps1 | iex; Install-Swarm roast-squad
 > ```
 
 ## 🎯 Works with your assistant
 
-One command, many tools. Pick your target with `--target`:
+One command, many tools. Choose your target with `--target`:
 
 | Tool | Installs to | How you invoke it | Flag |
 |------|-------------|-------------------|------|
 | **Claude Code** | `~/.claude/agents/` | auto-delegate · `/agents` | *(default)* |
-| **OpenCode** | `~/.config/opencode/agents/` | `@character` | `--target=opencode` |
-| **Codex CLI** | `~/.codex/prompts/` | `/prompts:character` | `--target=codex` |
-| **Cursor** | `.cursor/rules/` *(project)* | `@character` in chat | `--target=cursor` |
-| **Pi** | `~/.pi/agent/prompts/` | `/character` | `--target=pi` |
-| **Anything** | `./claude-cast-agents/` | reference the `.md` | `--target=generic` |
+| **OpenCode** | `~/.config/opencode/agents/` | `@agent` | `--target=opencode` |
+| **Codex CLI** | `~/.codex/prompts/` | `/prompts:agent` | `--target=codex` |
+| **Cursor** | `.cursor/rules/` *(project)* | `@agent` in chat | `--target=cursor` |
+| **Pi** | `~/.pi/agent/prompts/` | `/agent` | `--target=pi` |
+| **Anything** | `./agentic-swarm-agents/` | reference the `.md` | `--target=generic` |
 
 ```bash
-# Same characters, any tool:
-npx github:hlsitechio/claude-cast add wise-council --target=opencode
-npx github:hlsitechio/claude-cast add detective-agency --target=cursor --project
-npx github:hlsitechio/claude-cast add gandalf --target=claude,codex   # multiple at once
+# Same agents, any tool:
+npx github:hlsitechio/agentic-swarm add wise-council --target=opencode
+npx github:hlsitechio/agentic-swarm add detective-agency --target=cursor --project
+npx github:hlsitechio/agentic-swarm add gandalf --target=claude,codex   # multiple at once
 ```
 
 Use `--project` to install into the current repo instead of your global config, and `--dry-run`
@@ -79,14 +78,14 @@ to preview first.
 
 ---
 
-## 🧩 Teams
+## 🧩 The swarms
 
-Invoke a **team** when you want a whole vibe; invoke a **character** when you want one voice.
+Deploy a **team** for a whole vibe; deploy a single **agent** for one voice.
 
-### 🛠️ Functional teams — *invoke a team for a job*
+### 🛠️ Functional swarms — *deploy a team for a job*
 
-| Team | | For | Members |
-|------|--|-----|---------|
+| Team | | For | Agents |
+|------|--|-----|--------|
 | 🔥 `roast-squad` | **The Roast Squad** | Brutal, high-standards code review | Gordon Ramsay · Snape · Drill Sergeant · Darth Vader · Thanos · The Hound · Villain · Samuel L. Jackson |
 | 🧠 `wise-council` | **The Wise Council** | Architecture & deep guidance | Gandalf · Yoda · Obi-Wan · Dumbledore · Professor · Sherlock · Zen Master · Bartender |
 | 🤗 `comfort-crew` | **The Comfort Crew** | Gentle, beginner-friendly help | Bob Ross · Mr. Rogers · Grandma · Morgan Freeman · Therapist · Hagrid · Dobby |
@@ -96,10 +95,10 @@ Invoke a **team** when you want a whole vibe; invoke a **character** when you wa
 | 🎙️ `narrators` | **The Narrators** | Narrate your session | Morgan Freeman · David Attenborough · News Anchor · Weather Reporter · Movie Trailer · Sports Commentator · Dungeon Master |
 | 🎨 `creative-studio` | **The Creative Studio** | Code as art | Poet · Rapper · Jazz Musician · Shakespeare · Bob Ross |
 
-### 🌌 Universe teams — *assemble your favorite franchise*
+### 🌌 Universe swarms — *assemble your favorite franchise*
 
-| Team | | Members |
-|------|--|---------|
+| Team | | Agents |
+|------|--|--------|
 | ⚔️ `middle-earth` | **The Fellowship** | Gandalf · Gollum · Aragorn · Medieval Knight |
 | 🧙 `hogwarts` | **Hogwarts Faculty** | Dumbledore · Snape · Dobby · Hagrid |
 | 🦸 `avengers` | **The Avengers** | Tony Stark · Thor · Hulk · Thanos |
@@ -108,14 +107,14 @@ Invoke a **team** when you want a whole vibe; invoke a **character** when you wa
 | ⚡ `norse-raiders` | **The Norse Raiders** | Ragnar · Floki · Thor |
 | 🌍 `world-tour` | **The World Tour** | Aussie · Italian Chef · Surfer · Pirate · Astronaut · Alien |
 
-> Characters can appear in more than one team — teams are curated playlists, not exclusive buckets.
+> Agents can appear in more than one swarm — teams are curated rosters, not exclusive buckets.
 
 ---
 
-## 🎬 The full cast (70)
+## 🎬 The full roster (70 agents)
 
 <details>
-<summary><b>Click to expand all 70 characters</b></summary>
+<summary><b>Click to expand all 70 agents</b></summary>
 
 Gordon Ramsay · Yoda · Bob Ross · Noir Detective · David Attenborough · Dungeon Master · Coach ·
 Drill Sergeant · Wrestler · Sports Commentator · Samuel L. Jackson · Motivational Speaker ·
@@ -128,7 +127,7 @@ Escape Room · Dumbledore · Snape · Dobby · Hagrid · Gandalf · Gollum · Ar
 Obi-Wan · C-3PO · Tony Stark · Thor · Hulk · Thanos · Tyrion · Hodor · The Hound · Jon Snow ·
 Ragnar · Floki
 
-Each lives in [`cast/<name>/agent.md`](cast/) with ready-to-use frontmatter.
+Each lives in [`agents/<name>/agent.md`](agents/) with ready-to-use frontmatter.
 
 </details>
 
@@ -137,12 +136,12 @@ Each lives in [`cast/<name>/agent.md`](cast/) with ready-to-use frontmatter.
 ## 🧰 CLI reference
 
 ```text
-npx github:hlsitechio/claude-cast <command> [names...] [flags]
+npx github:hlsitechio/agentic-swarm <command> [names...] [flags]
 
 Commands
-  list [team]            List all teams, or one team's members
-  add  <name...>         Install character(s) and/or whole team(s)
-  remove <name...>       Uninstall character(s)/team(s)
+  list [team]            List all swarms, or one team's agents
+  add  <name...>         Install agent(s) and/or whole team(s)
+  remove <name...>       Uninstall agent(s)/team(s)
   help                   Show help
 
 Flags
@@ -156,21 +155,21 @@ Flags
 
 ## 🙋 Manual install (no CLI)
 
-Every `cast/<name>/agent.md` is already a valid Claude Code subagent (it has frontmatter):
+Every `agents/<name>/agent.md` is already a valid Claude Code subagent (it ships with frontmatter):
 
 ```bash
-cp cast/gordon-ramsay/agent.md ~/.claude/agents/gordon-ramsay.md
+cp agents/gordon-ramsay/agent.md ~/.claude/agents/gordon-ramsay.md
 ```
 
 ## 🤝 Contributing
 
-**Add your own character!** The cast is always auditioning.
+**Add your own agent!** The roster is always open.
 
 1. Fork this repo
-2. Create `cast/your-character/agent.md` with `Personality`, `Vocabulary`, `Example`, `Rules`
-3. Add a `name` + `description` to the frontmatter (run `python scripts/add_frontmatter.py` after adding a description)
+2. Create `agents/your-agent/agent.md` with `Personality`, `Vocabulary`, `Example`, `Rules`
+3. Add a description in `scripts/add_frontmatter.py`, then run `python scripts/add_frontmatter.py`
 4. Add them to one or more teams in `scripts/build_teams.py`, then run `python scripts/build_teams.py`
-5. Submit a PR — if it makes us laugh **and** teaches something, you're in
+5. Submit a PR — if it makes us smile **and** teaches something, you're in
 
 ## 🔗 Related
 
@@ -181,9 +180,9 @@ cp cast/gordon-ramsay/agent.md ~/.claude/agents/gordon-ramsay.md
 
 <div align="center">
 
-**70 characters. 15 teams. One command.**
+**70 agents. 15 swarms. One command.**
 
-*Technically accurate. Hilariously delivered.*
+*Technically accurate. Full of character. Ready for Claude Code, Codex, OpenCode, Cursor & Pi.*
 
 MIT License
 

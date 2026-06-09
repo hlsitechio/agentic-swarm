@@ -1,12 +1,12 @@
-# 🎭 claude-cast quick installer (Windows / PowerShell) — Claude Code, no Node required.
+# 🎭 agentic-swarm quick installer (Windows / PowerShell) — Claude Code, no Node required.
 #
-#   irm https://raw.githubusercontent.com/hlsitechio/claude-cast/main/install.ps1 | iex; Install-ClaudeCast roast-squad
+#   irm https://raw.githubusercontent.com/hlsitechio/agentic-swarm/main/install.ps1 | iex; Install-Swarm roast-squad
 #
 # Or download then run:
 #   .\install.ps1 gandalf yoda -Project
 #
 # For Codex / OpenCode / Cursor / Pi (full multi-tool support) use the CLI:
-#   npx github:hlsitechio/claude-cast add <team> --target=opencode
+#   npx github:hlsitechio/agentic-swarm add <team> --target=opencode
 param(
     [Parameter(ValueFromRemainingArguments = $true)]
     [string[]]$Names,
@@ -14,15 +14,15 @@ param(
     [switch]$Global
 )
 
-function Install-ClaudeCast {
+function Install-Swarm {
     param([string[]]$Names, [switch]$Project, [switch]$Global)
 
-    $repo = if ($env:CLAUDE_CAST_REPO) { $env:CLAUDE_CAST_REPO } else { "https://raw.githubusercontent.com/hlsitechio/claude-cast/main" }
+    $repo = if ($env:AGENTIC_SWARM_REPO) { $env:AGENTIC_SWARM_REPO } else { "https://raw.githubusercontent.com/hlsitechio/agentic-swarm/main" }
     $dest = if ($Project) { Join-Path (Get-Location) ".claude\agents" } else { Join-Path $HOME ".claude\agents" }
 
     if (-not $Names -or $Names.Count -eq 0) {
-        Write-Host "usage: Install-ClaudeCast <team-or-character> [more...] [-Project]"
-        Write-Host "browse teams: https://github.com/hlsitechio/claude-cast#teams"
+        Write-Host "usage: Install-Swarm <team-or-character> [more...] [-Project]"
+        Write-Host "browse teams: https://github.com/hlsitechio/agentic-swarm#teams"
         return
     }
 
@@ -30,7 +30,7 @@ function Install-ClaudeCast {
 
     function Install-One($slug) {
         try {
-            $md = Invoke-RestMethod -Uri "$repo/cast/$slug/agent.md" -ErrorAction Stop
+            $md = Invoke-RestMethod -Uri "$repo/agents/$slug/agent.md" -ErrorAction Stop
             Set-Content -Path (Join-Path $dest "$slug.md") -Value $md -Encoding utf8
             Write-Host "  + $slug"
         } catch {
@@ -54,5 +54,5 @@ function Install-ClaudeCast {
 
 # If invoked directly (not dot-sourced via iex), run with the bound params.
 if ($MyInvocation.InvocationName -ne '.' -and $Names) {
-    Install-ClaudeCast -Names $Names -Project:$Project -Global:$Global
+    Install-Swarm -Names $Names -Project:$Project -Global:$Global
 }

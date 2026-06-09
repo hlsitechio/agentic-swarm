@@ -1,8 +1,8 @@
 #!/usr/bin/env node
 /**
- * claude-cast — install AI personality agents (solo or by team) into your coding assistant.
+ * agentic-swarm — install AI personality agents (solo or by team) into your coding assistant.
  *
- * Zero dependencies. Works via:  npx github:hlsitechio/claude-cast <command>
+ * Zero dependencies. Works via:  npx github:hlsitechio/agentic-swarm <command>
  *
  * Commands:
  *   list [team]                 List all teams, or the members of one team
@@ -25,7 +25,7 @@ const path = require("path");
 const os = require("os");
 
 const ROOT = path.join(__dirname, "..");
-const CAST_DIR = path.join(ROOT, "cast");
+const CAST_DIR = path.join(ROOT, "agents");
 const TEAMS_DIR = path.join(ROOT, "teams");
 
 // ── tiny ANSI helpers ──────────────────────────────────────────────────────
@@ -132,7 +132,7 @@ const TARGETS = {
   generic: {
     label: "Generic markdown",
     invoke: () => `reference the .md file in your tool of choice`,
-    dir: (project, out) => out || path.join(process.cwd(), "claude-cast-agents"),
+    dir: (project, out) => out || path.join(process.cwd(), "agentic-swarm-agents"),
     render: (ch) => `---\nname: ${ch.slug}\ndescription: "${yamlEscape(ch.description)}"\n---\n\n${ch.body}`,
     ext: ".md",
   },
@@ -181,13 +181,13 @@ function cmdList(positional, teams) {
     console.log();
     return;
   }
-  console.log(`\n${bold("🎭 Claude Cast — teams")}  ${dim("(npx github:hlsitechio/claude-cast add <team>)")}\n`);
+  console.log(`\n${bold("🐝 Agentic Swarm — teams")}  ${dim("(npx github:hlsitechio/agentic-swarm add <team>)")}\n`);
   for (const t of Object.values(teams)) {
     console.log(`  ${t.emoji}  ${cyan(t.id.padEnd(18))} ${bold(t.name.padEnd(22))} ${dim(t.tagline)} ${dim("· " + t.members.length)}`);
   }
-  console.log(`\n  ${dim("List a team's members:")} npx github:hlsitechio/claude-cast list roast-squad`);
-  console.log(`  ${dim("Install a team:       ")} npx github:hlsitechio/claude-cast add roast-squad`);
-  console.log(`  ${dim("Install one character:")} npx github:hlsitechio/claude-cast add gandalf\n`);
+  console.log(`\n  ${dim("List a team's members:")} npx github:hlsitechio/agentic-swarm list roast-squad`);
+  console.log(`  ${dim("Install a team:       ")} npx github:hlsitechio/agentic-swarm add roast-squad`);
+  console.log(`  ${dim("Install one character:")} npx github:hlsitechio/agentic-swarm add gandalf\n`);
 }
 
 function ensureScope(target, flags) {
@@ -275,10 +275,10 @@ function cmdRemove(positional, teams, characters, flags) {
 
 function help() {
   console.log(`
-${bold("🎭 claude-cast")} — install AI personality agents into your coding assistant.
+${bold("🐝 agentic-swarm")} — install AI personality agents into your coding assistant.
 
 ${bold("Usage")}
-  npx github:hlsitechio/claude-cast <command> [names...] [flags]
+  npx github:hlsitechio/agentic-swarm <command> [names...] [flags]
 
 ${bold("Commands")}
   list [team]            List all teams, or one team's members
@@ -295,11 +295,11 @@ ${bold("Flags")}
   --dry-run              ${dim("Preview without writing")}
 
 ${bold("Examples")}
-  npx github:hlsitechio/claude-cast list
-  npx github:hlsitechio/claude-cast add roast-squad
-  npx github:hlsitechio/claude-cast add gandalf yoda --target=opencode
-  npx github:hlsitechio/claude-cast add wise-council --target=claude,cursor --project
-  npx github:hlsitechio/claude-cast remove comedy-club
+  npx github:hlsitechio/agentic-swarm list
+  npx github:hlsitechio/agentic-swarm add roast-squad
+  npx github:hlsitechio/agentic-swarm add gandalf yoda --target=opencode
+  npx github:hlsitechio/agentic-swarm add wise-council --target=claude,cursor --project
+  npx github:hlsitechio/agentic-swarm remove comedy-club
 `);
 }
 
