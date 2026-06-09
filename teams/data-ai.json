@@ -4,6 +4,7 @@
   "name": "Data & AI",
   "tagline": "Pipelines, models & LLM apps",
   "members": [
+    "data-ai-lead",
     "data-engineer",
     "ml-engineer",
     "data-scientist",

@@ -4,6 +4,7 @@
   "name": "Architecture Guild",
   "tagline": "Design systems, APIs & boundaries",
   "members": [
+    "architecture-lead",
     "solution-architect",
     "api-designer",
     "domain-modeler",

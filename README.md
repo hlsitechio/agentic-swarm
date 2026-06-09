@@ -15,7 +15,7 @@ Claude Code · VS Code · Codex · OpenCode · Cursor · Pi — same agents, one
 [![Cursor](https://img.shields.io/badge/Cursor-✓-blue?style=flat-square)](https://cursor.com)
 [![Pi](https://img.shields.io/badge/Pi-✓-ff5c8a?style=flat-square)](https://pi.dev)
 <br>
-[![Agents](https://img.shields.io/badge/Agents-60-orange?style=flat-square)]()
+[![Agents](https://img.shields.io/badge/Agents-70-orange?style=flat-square)]()
 [![Teams](https://img.shields.io/badge/Teams-10-success?style=flat-square)]()
 [![Install](https://img.shields.io/badge/install-npx-cb3837?style=flat-square&logo=npm)]()
 [![License](https://img.shields.io/badge/License-MIT-yellow?style=flat-square)]()
@@ -101,7 +101,7 @@ Copy-paste a command — each spawns the whole team into **Claude Code**. Add `-
 | 10 | 🧩 Specialists | `npx github:hlsitechio/agentic-swarm spawn specialists` |
 
 > **Prefer numbers?** `npx … spawn 1` … `spawn 10` work identically. Spawn several at once: `spawn 2 6`.
-> **Spawn everything** (all 60 agents): `npx … spawn architecture backend frontend languages quality security devops data-ai product-docs specialists`
+> **Spawn everything** (all 70 agents, leads included): `npx … spawn architecture backend frontend languages quality security devops data-ai product-docs specialists`
 
 ---
 
@@ -127,9 +127,9 @@ npx github:hlsitechio/agentic-swarm spawn security --target=claude,vscode,codex,
 
 ---
 
-## 👥 The roster — 60 agents in 10 teams
+## 👥 The roster — 70 agents in 10 teams
 
-Deploy a **team** to cover a domain end-to-end, or a single **agent** for a precise task.
+Each team has a **`<team>-lead`** that orients on your codebase, dispatches its specialists (parallel or pipeline), and writes one consolidated report — plus **6 specialists**. Deploy a whole **team** to cover a domain end-to-end, or a single **agent** for a precise task.
 Run `list <team|#>` to see each agent's description.
 
 <table>
@@ -255,7 +255,7 @@ share with the team); the default is your global user config. Cursor is project-
 
 ---
 
-**Write once. Deploy anywhere.** · 60 agents · 10 teams · 6 tools · one command.
+**Write once. Deploy anywhere.** · 70 agents · 10 teams + leads · 6 tools · one command.
 
 MIT License
 

@@ -4,6 +4,7 @@
   "name": "Language Pros",
   "tagline": "Deep per-language expertise",
   "members": [
+    "languages-lead",
     "python-pro",
     "typescript-pro",
     "go-pro",

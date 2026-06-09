@@ -4,6 +4,7 @@
   "name": "Specialists",
   "tagline": "Targeted, high-leverage expertise",
   "members": [
+    "specialists-lead",
     "migration-specialist",
     "legacy-modernizer",
     "payments-engineer",

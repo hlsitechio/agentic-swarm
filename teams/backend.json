@@ -4,6 +4,7 @@
   "name": "Backend Squad",
   "tagline": "Server-side services & data",
   "members": [
+    "backend-lead",
     "backend-engineer",
     "microservices-engineer",
     "database-engineer",

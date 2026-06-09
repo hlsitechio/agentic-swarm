@@ -4,6 +4,7 @@
   "name": "Security Team",
   "tagline": "AppSec, offense & supply chain",
   "members": [
+    "security-lead",
     "security-auditor",
     "appsec-engineer",
     "penetration-tester",

@@ -734,10 +734,20 @@ TEAMS: dict[str, tuple] = {
 }
 
 
-def render(slug: str, a: dict) -> str:
+def render(slug: str, a: dict, team: tuple | None) -> str:
+    """Render a specialist agent. `team` is (tid, emoji, name) or None."""
     does = "\n".join(f"- {d}" for d in a["does"])
     principles = "\n".join(f"- {p}" for p in a["principles"])
     desc = a["use"].replace('"', "'")
+    team_block = ""
+    if team:
+        tid, emoji, tname = team
+        team_block = (
+            f"\n## Your team\n"
+            f"You operate as part of the {emoji} **{tname}**. The `{tid}-lead` may dispatch you "
+            f"with a focused task and will integrate your output — stay in your lane and hand back a "
+            f"clean, self-contained result.\n"
+        )
     return f"""---
 name: {slug}
 description: "{desc}"
@@ -752,17 +762,69 @@ You are **{a['title']}**, {a['role']}
 
 ## Operating principles
 {principles}
-
+{team_block}
 ## When invoked
-1. Clarify the goal, constraints, and definition of done before acting.
-2. Inspect the relevant code/context; state assumptions you're making.
-3. Do the work in small, verifiable steps.
-4. Explain key decisions and trade-offs; flag risks and follow-ups.
+1. **Orient first.** Before acting, map the ground you're working on: the stack, framework,
+   conventions, entry points, and how this piece fits the whole system. Read the real files —
+   don't assume. State what you found.
+2. Clarify the goal, constraints, and definition of done.
+3. Do the work in small, verifiable steps, strictly within your specialty.
+4. Explain key decisions and trade-offs; flag risks, assumptions, and follow-ups.
+5. Hand back a clear, self-contained result your team lead can integrate.
 
 ## Output
-- Concrete, actionable results (code, designs, reviews, or plans).
+- Concrete, actionable results (code, designs, reviews, or plans) with file/line specifics.
 - Reasoning for non-obvious choices, and what you deliberately did **not** do.
 - Clear next steps when the task is larger than one pass.
+"""
+
+
+def render_lead(tid: str, emoji: str, name: str, tagline: str, members: list[str]) -> str:
+    """Render a team lead: orients, dispatches its specialists, and reports."""
+    roster = "\n".join(f"- `{m}` — {AGENTS[m]['use']}" for m in members)
+    desc = (
+        f"Lead & reporter for the {name}. Orients on the target, dispatches the {tid} team "
+        f"(parallel or pipeline), and synthesizes one prioritized report. Use to run the whole "
+        f"{tid} team end to end."
+    ).replace('"', "'")
+    return f"""---
+name: {tid}-lead
+description: "{desc}"
+---
+
+# {emoji} {name} — Lead & Reporter
+
+You are the **lead** of the {emoji} {name}. Your job is not to do all the work yourself — it is to
+**orient, dispatch your specialists, and synthesize their work into one prioritized report.**
+Mission: {tagline}.
+
+## Your team
+{roster}
+
+## Playbook
+1. **Orient first.** Before dispatching anyone, map the target yourself: stack, structure, entry
+   points, conventions, scope, and what you are authorized to touch. Read enough to brief the team well.
+2. **Plan the run.** Decide who to dispatch and how:
+   - **Parallel** when the tasks are independent — fast, broad coverage.
+   - **Pipeline** when one feeds the next (e.g. design / threat-model first, then others build on it).
+   Give each specialist a *focused, scoped* brief — never "look at everything".
+3. **Dispatch** each specialist (via your tool's subagent / Task mechanism, or by adopting their role
+   in turn if subagents aren't available). One clear assignment each.
+4. **Collect & cross-check.** Merge results, dedupe, and note where specialists agree (high
+   confidence) vs. disagree (needs verification).
+5. **Report.** Produce ONE consolidated, prioritized report — you are the team's reporter.
+
+## Report format
+- **Verdict** — one short paragraph: overall state + the single most important thing.
+- **Findings / results** — a table ranked by priority: `id · item · location/area · recommended action`.
+- **Gaps** — what you did **not** cover and why. Never imply coverage you didn't actually do.
+- **Next move** — the smallest change with the biggest payoff.
+
+## Principles
+- Orient before acting; never dispatch blind.
+- Only operate within authorized scope.
+- Prefer confirmed, cross-checked findings over speculation.
+- The report is the product — skimmable, prioritized, and specific (files/lines, exact actions).
 """
 
 
@@ -770,16 +832,35 @@ def main() -> int:
     AGENTS_DIR.mkdir(exist_ok=True)
     TEAMS_DIR.mkdir(exist_ok=True)
 
+    # Map each specialist to its team so the agent prompt knows where it belongs.
+    slug_team: dict[str, tuple] = {}
+    for tid, (emoji, name, tagline, members) in TEAMS.items():
+        for m in members:
+            slug_team[m] = (tid, emoji, name)
+
+    # Write specialist agents (team-aware).
     for slug, a in AGENTS.items():
         d = AGENTS_DIR / slug
         d.mkdir(exist_ok=True)
-        (d / "agent.md").write_text(render(slug, a), encoding="utf-8", newline="\n")
+        (d / "agent.md").write_text(render(slug, a, slug_team.get(slug)), encoding="utf-8", newline="\n")
 
-    known = set(AGENTS)
+    # Write one lead per team; the lead is added to its team's roster (first).
+    lead_slugs: list[str] = []
+    final_teams: dict[str, tuple] = {}
+    for tid, (emoji, name, tagline, members) in TEAMS.items():
+        lead = f"{tid}-lead"
+        d = AGENTS_DIR / lead
+        d.mkdir(exist_ok=True)
+        (d / "agent.md").write_text(
+            render_lead(tid, emoji, name, tagline, members), encoding="utf-8", newline="\n")
+        lead_slugs.append(lead)
+        final_teams[tid] = (emoji, name, tagline, [lead] + members)
+
+    known = set(AGENTS) | set(lead_slugs)
     covered: set[str] = set()
     errors: list[str] = []
     index = []
-    for tid, (emoji, name, tagline, members) in TEAMS.items():
+    for tid, (emoji, name, tagline, members) in final_teams.items():
         for m in members:
             if m not in known:
                 errors.append(f"{tid}: unknown member '{m}'")
@@ -793,7 +874,8 @@ def main() -> int:
         json.dumps({"teams": index}, indent=2, ensure_ascii=False) + "\n", encoding="utf-8", newline="\n")
 
     orphans = sorted(known - covered)
-    print(f"agents={len(AGENTS)} teams={len(TEAMS)} covered={len(covered)}/{len(known)}")
+    print(f"specialists={len(AGENTS)} leads={len(lead_slugs)} agents={len(known)} "
+          f"teams={len(final_teams)} covered={len(covered)}/{len(known)}")
     if orphans:
         print("NOT IN ANY TEAM:", ", ".join(orphans))
     if errors:

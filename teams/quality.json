@@ -4,6 +4,7 @@
   "name": "Quality Crew",
   "tagline": "Correctness, tests & performance",
   "members": [
+    "quality-lead",
     "code-reviewer",
     "qa-engineer",
     "test-automation-engineer",

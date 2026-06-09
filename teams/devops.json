@@ -4,6 +4,7 @@
   "name": "DevOps & SRE",
   "tagline": "Ship, scale & operate",
   "members": [
+    "devops-lead",
     "devops-engineer",
     "site-reliability-engineer",
     "kubernetes-engineer",
