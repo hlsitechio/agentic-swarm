@@ -10,6 +10,7 @@
 [![Codex](https://img.shields.io/badge/Codex-Compatible-black?style=flat-square&logo=openai)](https://developers.openai.com/codex)
 [![OpenCode](https://img.shields.io/badge/OpenCode-Compatible-00bcd4?style=flat-square)](https://opencode.ai)
 [![Cursor](https://img.shields.io/badge/Cursor-Compatible-blue?style=flat-square)](https://cursor.com)
+[![VS Code](https://img.shields.io/badge/VS_Code-Compatible-007ACC?style=flat-square&logo=visualstudiocode)](https://code.visualstudio.com)
 [![Agents](https://img.shields.io/badge/Agents-60-orange?style=flat-square)]()
 [![Teams](https://img.shields.io/badge/Teams-10-success?style=flat-square)]()
 [![License](https://img.shields.io/badge/License-MIT-yellow?style=flat-square)]()
@@ -18,17 +19,27 @@
 
 ---
 
+## The problem
+
+Every time you try a new coding tool — **VS Code, Codex, OpenCode, Cursor, Pi, Claude Code** — you
+rebuild your agents from scratch. Different folders, different file formats, different frontmatter.
+That reviewer, security auditor, or architect you carefully tuned? It doesn't come with you, so you
+stop and recreate it. Again.
+
+**Agentic Swarm fixes that.** Define your agents **once**; deploy the whole swarm into any tool in
+seconds. Switch tools — or onboard a teammate — without losing your squad.
+
 ## What is this?
 
-**Agentic Swarm** is a curated library of **60 specialist software-engineering agents**, sorted into
-**10 teams**, that you install into your coding assistant with **one command** — no cloning, no copy-paste.
+A curated library of **60 specialist software-engineering agents**, sorted into **10 teams**, that
+install into your coding assistant with **one command** — no cloning, no copy-paste.
 
 Each agent is a focused expert with a real, production-minded system prompt: a security auditor, a
 database engineer, a React specialist, an SRE. Deploy a whole **team** to cover a domain end-to-end,
 or drop in a single agent for a precise task.
 
-Works with **Claude Code, Codex, OpenCode, Cursor, and Pi** — the same agents, installed in each
-tool's native format.
+**One definition → every tool.** The same agents install natively into **Claude Code, VS Code
+(Copilot), Codex, OpenCode, Cursor, and Pi**.
 
 ## ⚡ Quick start
 
@@ -61,6 +72,7 @@ One command, many tools. Choose your target with `--target`:
 | Tool | Installs to | How you invoke it | Flag |
 |------|-------------|-------------------|------|
 | **Claude Code** | `~/.claude/agents/` | auto-delegate · `/agents` | *(default)* |
+| **VS Code (Copilot)** | `.github/agents/` *(project)* · `~/.copilot/agents/` | agents dropdown | `--target=vscode` |
 | **OpenCode** | `~/.config/opencode/agents/` | `@agent` | `--target=opencode` |
 | **Codex CLI** | `~/.codex/prompts/` | `/prompts:agent` | `--target=codex` |
 | **Cursor** | `.cursor/rules/` *(project)* | `@agent` in chat | `--target=cursor` |
@@ -69,7 +81,8 @@ One command, many tools. Choose your target with `--target`:
 
 ```bash
 # Same agents, any tool:
-npx github:hlsitechio/agentic-swarm add devops --target=opencode
+npx github:hlsitechio/agentic-swarm add devops --target=vscode --project
+npx github:hlsitechio/agentic-swarm add backend --target=opencode
 npx github:hlsitechio/agentic-swarm add quality --target=cursor --project
 npx github:hlsitechio/agentic-swarm add code-reviewer --target=claude,codex   # multiple at once
 ```
@@ -181,7 +194,7 @@ teams, then writes `agents/` and `teams/`. To add or edit agents, edit that scri
 
 **60 agents. 10 teams. One command.**
 
-*Real engineering specialists, ready for Claude Code, Codex, OpenCode, Cursor & Pi.*
+*Real engineering specialists, ready for Claude Code, VS Code, Codex, OpenCode, Cursor & Pi.*
 
 MIT License
 

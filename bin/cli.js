@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- * agentic-swarm — install AI personality agents (solo or by team) into your coding assistant.
+ * agentic-swarm — install specialist engineering agents (solo or by team) into your coding assistant.
  *
  * Zero dependencies. Works via:  npx github:hlsitechio/agentic-swarm <command>
  *
@@ -11,7 +11,7 @@
  *   help                        Show usage
  *
  * Flags:
- *   --target=<t[,t...]>   claude (default), codex, opencode, cursor, pi, generic
+ *   --target=<t[,t...]>   claude (default), vscode, codex, opencode, cursor, pi, generic
  *   --project             Install into the current project instead of global config
  *   --global              Force global install (default for claude/codex/opencode/pi)
  *   --out=<dir>           Custom output dir (generic target)
@@ -96,6 +96,14 @@ const TARGETS = {
     render: (ch) =>
       `---\nname: ${ch.slug}\ndescription: "${yamlEscape(ch.description)}"\n---\n\n${ch.body}`,
     ext: ".md",
+  },
+  vscode: {
+    label: "VS Code (Copilot)",
+    invoke: (n) => `pick "${n}" in the Chat agents dropdown`,
+    dir: (project) => (project ? path.join(process.cwd(), ".github", "agents") : path.join(os.homedir(), ".copilot", "agents")),
+    render: (ch) =>
+      `---\nname: ${ch.slug}\ndescription: "${yamlEscape(ch.description)}"\n---\n\n${ch.body}`,
+    ext: ".agent.md",
   },
   opencode: {
     label: "OpenCode",
@@ -287,7 +295,7 @@ ${bold("Commands")}
   help                   Show this help
 
 ${bold("Flags")}
-  --target=<t[,t...]>    ${dim("claude (default), codex, opencode, cursor, pi, generic")}
+  --target=<t[,t...]>    ${dim("claude (default), vscode, codex, opencode, cursor, pi, generic")}
   --project              ${dim("Install into ./ (project) instead of global config")}
   --global               ${dim("Force global install")}
   --out=<dir>            ${dim("Custom output dir for the 'generic' target")}

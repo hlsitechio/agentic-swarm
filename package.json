@@ -1,7 +1,7 @@
 {
   "name": "agentic-swarm",
   "version": "2.0.0",
-  "description": "60 specialist software-engineering AI agents, organized into 10 teams, installed with one command into Claude Code, Codex, OpenCode, Cursor & Pi.",
+  "description": "Write your agents once, deploy anywhere. 60 specialist software-engineering AI agents in 10 teams, installed with one command into Claude Code, VS Code, Codex, OpenCode, Cursor & Pi.",
   "bin": {
     "agentic-swarm": "bin/cli.js"
   },
@@ -25,6 +25,8 @@
     "agent-swarm",
     "agentic",
     "claude-code",
+    "vscode",
+    "copilot",
     "codex",
     "opencode",
     "cursor",
