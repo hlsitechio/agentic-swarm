@@ -129,7 +129,7 @@ npx github:hlsitechio/agentic-swarm spawn security --target=claude,vscode,codex,
 
 ## 👥 The roster — 70 agents in 10 teams
 
-Each team has a **`<team>-lead`** that orients on your codebase, dispatches its specialists (parallel or pipeline), and writes one consolidated report — plus **6 specialists**. Deploy a whole **team** to cover a domain end-to-end, or a single **agent** for a precise task.
+Each team has a **`<team>-lead`** that orients on your codebase, dispatches its specialists (parallel or pipeline), and writes one consolidated report — plus **6 specialists**. In Claude Code the lead installs as a **`/<team>-lead` slash command** (it runs in your main session, so it can actually dispatch the specialist subagents — a subagent can't); in OpenCode it's a **primary agent**. Deploy a whole **team** to cover a domain end-to-end, or a single **agent** for a precise task.
 Run `list <team|#>` to see each agent's description.
 
 <table>

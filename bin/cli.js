@@ -96,6 +96,16 @@ const TARGETS = {
     render: (ch) =>
       `---\nname: ${ch.slug}\ndescription: "${yamlEscape(ch.description)}"\n---\n\n${ch.body}`,
     ext: ".md",
+    // Leads install as a SLASH COMMAND, not a subagent: a subagent can't spawn
+    // subagents in Claude Code, but a slash command runs in the main session and
+    // CAN dispatch the specialist subagents.
+    lead: {
+      dir: (project) => (project ? path.join(process.cwd(), ".claude", "commands") : path.join(os.homedir(), ".claude", "commands")),
+      ext: ".md",
+      render: (ch) =>
+        `---\ndescription: "${yamlEscape(ch.description)}"\nargument-hint: "[target / scope]"\n---\n\n${ch.body}\n\n## This run\nTarget / scope for this run (if provided): $ARGUMENTS\n`,
+      invoke: (n) => `/${n}  (slash command — runs in your main session so it can dispatch the team)`,
+    },
   },
   vscode: {
     label: "VS Code (Copilot)",
@@ -112,6 +122,14 @@ const TARGETS = {
     render: (ch) =>
       `---\ndescription: "${yamlEscape(ch.description)}"\nmode: subagent\n---\n\n${ch.body}`,
     ext: ".md",
+    // Leads are a PRIMARY agent (can invoke subagents); specialists are subagents.
+    lead: {
+      dir: (project) => (project ? path.join(process.cwd(), ".opencode", "agents") : path.join(os.homedir(), ".config", "opencode", "agents")),
+      ext: ".md",
+      render: (ch) =>
+        `---\ndescription: "${yamlEscape(ch.description)}"\nmode: primary\n---\n\n${ch.body}`,
+      invoke: (n) => `Tab to "${n}" (primary agent — can dispatch the subagents)`,
+    },
   },
   codex: {
     label: "Codex CLI",
@@ -247,25 +265,40 @@ function cmdAdd(positional, teams, characters, flags, order) {
       continue;
     }
     const project = ensureScope(target, flags);
-    const dir = t.dir(project, flags.out);
-    console.log(`\n${bold(t.label)} ${dim("→ " + dir)} ${flags.dryRun ? yellow("[dry-run]") : ""}`);
+    console.log(`\n${bold(t.label)} ${dim("→ " + t.dir(project, flags.out))} ${flags.dryRun ? yellow("[dry-run]") : ""}`);
     let wrote = 0;
     let skipped = 0;
+    let leadWrote = false;
     for (const slug of slugs) {
       const ch = loadCharacter(slug);
       if (!ch) continue;
-      const dest = path.join(dir, slug + t.ext);
+      // A lead routes to its own primitive (slash command / primary agent) when the target defines one.
+      const isLead = slug.endsWith("-lead") && !!t.lead;
+      const spec = isLead ? t.lead : t;
+      const dir = spec.dir(project, flags.out);
+      const dest = path.join(dir, slug + spec.ext);
+      // Migration: older versions installed leads as subagents. If a stale copy
+      // exists at the specialist location, remove it (it can't orchestrate there).
+      if (isLead) {
+        const legacy = path.join(t.dir(project, flags.out), slug + t.ext);
+        if (legacy !== dest && fs.existsSync(legacy)) {
+          if (!flags.dryRun) fs.unlinkSync(legacy);
+          console.log(`  ${yellow("cleanup")} ${slug}${t.ext} ${dim("(removed stale subagent — leads are /commands now)")}`);
+        }
+      }
       const exists = fs.existsSync(dest);
       if (exists && !flags.force) {
-        console.log(`  ${dim("✓ ready")} ${slug}${t.ext} ${dim("(already installed)")}`);
+        console.log(`  ${dim("✓ ready")} ${slug}${spec.ext} ${dim("(already installed)")}`);
         skipped++;
         continue;
       }
       if (!flags.dryRun) {
         fs.mkdirSync(dir, { recursive: true });
-        fs.writeFileSync(dest, t.render(ch), "utf8");
+        fs.writeFileSync(dest, spec.render(ch), "utf8");
       }
-      console.log(`  ${green(exists ? "overwrite" : "add ")} ${cyan(slug + t.ext)}  ${dim("invoke: " + t.invoke(slug))}`);
+      const where = isLead ? dim("→ " + dir + " ") : "";
+      console.log(`  ${green(exists ? "overwrite" : "add ")} ${cyan(slug + spec.ext)} ${where} ${dim("· " + spec.invoke(slug))}`);
+      if (isLead) leadWrote = true;
       wrote++;
     }
     // Clear summary: distinguish "freshly installed" from "already provisioned".
@@ -279,7 +312,7 @@ function cmdAdd(positional, teams, characters, flags, order) {
       console.log(dim(`  nothing to do for ${t.label}.`));
     }
     if (target === "claude" && !flags.dryRun && wrote) {
-      console.log(dim("  ↳ restart Claude Code (or use /agents) to load new agents."));
+      console.log(dim("  ↳ restart Claude Code to load new agents" + (leadWrote ? " & the lead's /command." : ".")));
     }
   }
   console.log();
@@ -298,15 +331,15 @@ function cmdRemove(positional, teams, characters, flags, order) {
       continue;
     }
     const project = ensureScope(target, flags);
-    const dir = t.dir(project, flags.out);
-    console.log(`\n${bold(t.label)} ${dim("→ " + dir)} ${flags.dryRun ? yellow("[dry-run]") : ""}`);
+    console.log(`\n${bold(t.label)} ${flags.dryRun ? yellow("[dry-run]") : ""}`);
     for (const slug of slugs) {
-      const dest = path.join(dir, slug + t.ext);
+      const spec = (slug.endsWith("-lead") && t.lead) ? t.lead : t;
+      const dest = path.join(spec.dir(project, flags.out), slug + spec.ext);
       if (fs.existsSync(dest)) {
         if (!flags.dryRun) fs.unlinkSync(dest);
-        console.log(`  ${green("removed")} ${cyan(slug + t.ext)}`);
+        console.log(`  ${green("removed")} ${cyan(slug + spec.ext)}`);
       } else {
-        console.log(`  ${dim("absent ")} ${slug + t.ext}`);
+        console.log(`  ${dim("absent ")} ${slug + spec.ext}`);
       }
     }
   }
