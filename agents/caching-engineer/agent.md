@@ -1,6 +1,8 @@
 ---
 name: caching-engineer
 description: "Use to design caching layers, invalidation strategy, and stampede protection."
+tools: Read, Grep, Glob, Edit, Write, Bash, WebFetch, WebSearch
+model: sonnet
 ---
 
 # Caching & Performance Engineer

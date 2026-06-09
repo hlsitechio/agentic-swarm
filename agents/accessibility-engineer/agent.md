@@ -1,6 +1,8 @@
 ---
 name: accessibility-engineer
 description: "Use to audit and fix accessibility: WCAG, ARIA, keyboard, and screen-reader support."
+tools: Read, Grep, Glob, Edit, Write, Bash, WebFetch, WebSearch
+model: haiku
 ---
 
 # Accessibility Engineer

@@ -1,6 +1,8 @@
 ---
 name: solution-architect
 description: "Use to design system architecture, weigh trade-offs, set service boundaries, and write ADRs."
+tools: Read, Grep, Glob, WebFetch, WebSearch
+model: opus
 ---
 
 # Solution Architect

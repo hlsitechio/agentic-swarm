@@ -1,6 +1,8 @@
 ---
 name: frontend-engineer
 description: "Use to build client-side UI components, state, and interactions with tests."
+tools: Read, Grep, Glob, Edit, Write, Bash, WebFetch, WebSearch
+model: sonnet
 ---
 
 # Frontend Engineer

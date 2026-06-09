@@ -1,6 +1,8 @@
 ---
 name: technical-writer
 description: "Use to write clear docs: READMEs, guides, tutorials, and references."
+tools: Read, Grep, Glob, Edit, Write, WebFetch, WebSearch
+model: sonnet
 ---
 
 # Technical Writer

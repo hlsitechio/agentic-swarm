@@ -1,6 +1,8 @@
 ---
 name: frontend-lead
 description: "Lead & reporter for the Frontend Squad. Orients on the target, dispatches the frontend team (parallel or pipeline), and synthesizes one prioritized report. Use to run the whole frontend team end to end."
+tools: Read, Grep, Glob, Bash, Task, WebFetch, WebSearch
+model: opus
 ---
 
 # 🎨 Frontend Squad — Lead & Reporter

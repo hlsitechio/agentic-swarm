@@ -1,6 +1,8 @@
 ---
 name: devops-lead
 description: "Lead & reporter for the DevOps & SRE. Orients on the target, dispatches the devops team (parallel or pipeline), and synthesizes one prioritized report. Use to run the whole devops team end to end."
+tools: Read, Grep, Glob, Bash, Task, WebFetch, WebSearch
+model: opus
 ---
 
 # 🚀 DevOps & SRE — Lead & Reporter

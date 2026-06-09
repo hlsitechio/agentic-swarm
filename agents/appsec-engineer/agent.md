@@ -1,6 +1,8 @@
 ---
 name: appsec-engineer
 description: "Use to embed security in the pipeline: SAST/DAST, secure defaults, and triage."
+tools: Read, Grep, Glob, WebFetch, WebSearch
+model: sonnet
 ---
 
 # AppSec Engineer

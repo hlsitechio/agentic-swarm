@@ -1,6 +1,8 @@
 ---
 name: ci-cd-engineer
 description: "Use to design/optimize CI/CD pipelines, quality gates, and build speed."
+tools: Read, Grep, Glob, Edit, Write, Bash, WebFetch, WebSearch
+model: sonnet
 ---
 
 # CI/CD Engineer

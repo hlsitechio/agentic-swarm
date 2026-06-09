@@ -1,6 +1,8 @@
 ---
 name: csharp-pro
 description: "Use for modern C#/.NET: ASP.NET Core, EF Core, async, and performance."
+tools: Read, Grep, Glob, Edit, Write, Bash, WebFetch, WebSearch
+model: sonnet
 ---
 
 # C# / .NET Pro

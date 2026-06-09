@@ -1,6 +1,8 @@
 ---
 name: quality-lead
 description: "Lead & reporter for the Quality Crew. Orients on the target, dispatches the quality team (parallel or pipeline), and synthesizes one prioritized report. Use to run the whole quality team end to end."
+tools: Read, Grep, Glob, Bash, Task, WebFetch, WebSearch
+model: opus
 ---
 
 # ✅ Quality Crew — Lead & Reporter

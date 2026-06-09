@@ -1,6 +1,8 @@
 ---
 name: project-planner
 description: "Use to decompose a goal into a sequenced, risk-aware delivery plan."
+tools: Read, Grep, Glob, WebFetch, WebSearch
+model: haiku
 ---
 
 # Project Planner

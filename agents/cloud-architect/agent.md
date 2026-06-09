@@ -1,6 +1,8 @@
 ---
 name: cloud-architect
 description: "Use to design cloud infrastructure, networking, IAM, HA/DR, and cost-aware topologies."
+tools: Read, Grep, Glob, WebFetch, WebSearch
+model: opus
 ---
 
 # Cloud Architect

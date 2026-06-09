@@ -1,6 +1,8 @@
 ---
 name: graphql-engineer
 description: "Use to design GraphQL schemas/resolvers, fix N+1s, and secure query cost."
+tools: Read, Grep, Glob, Edit, Write, Bash, WebFetch, WebSearch
+model: sonnet
 ---
 
 # GraphQL Engineer

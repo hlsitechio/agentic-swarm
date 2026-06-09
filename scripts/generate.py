@@ -734,11 +734,49 @@ TEAMS: dict[str, tuple] = {
 }
 
 
+# ── capability + cost tiers ──────────────────────────────────────────────────
+# access → tools allowlist. Restricting tools is the big cost lever: a subagent
+# with an explicit allowlist does NOT load every MCP server's schema into its
+# context (which is what makes an unrestricted swarm so token-hungry).
+TOOLSETS = {
+    "read":  "Read, Grep, Glob, WebFetch, WebSearch",
+    "write": "Read, Grep, Glob, Edit, Write, WebFetch, WebSearch",
+    "exec":  "Read, Grep, Glob, Edit, Write, Bash, WebFetch, WebSearch",
+}
+ACCESS_BY_TEAM = {
+    "architecture": "read", "security": "read", "product-docs": "read",
+    "backend": "exec", "frontend": "exec", "languages": "exec",
+    "devops": "exec", "data-ai": "exec", "specialists": "exec", "quality": "exec",
+}
+ACCESS_OVERRIDE = {
+    "code-reviewer": "read", "qa-engineer": "read", "performance-engineer": "read",
+    "data-scientist": "read",
+    "technical-writer": "write", "api-documenter": "write", "release-manager": "write",
+}
+# model tier → Claude Code model keyword.
+TIER_FAST = {"secrets-scanner", "dependency-auditor", "api-documenter", "i18n-engineer",
+             "seo-engineer", "qa-engineer", "accessibility-engineer", "release-manager",
+             "project-planner"}
+TIER_DEEP = {"solution-architect", "cloud-architect", "domain-modeler", "threat-modeler",
+             "security-auditor", "penetration-tester", "ml-engineer", "data-scientist"}
+CLAUDE_MODEL = {"fast": "haiku", "standard": "sonnet", "deep": "opus"}
+
+
+def access_for(slug: str, team_id: str | None) -> str:
+    return ACCESS_OVERRIDE.get(slug, ACCESS_BY_TEAM.get(team_id or "", "read"))
+
+
+def tier_for(slug: str) -> str:
+    return "fast" if slug in TIER_FAST else "deep" if slug in TIER_DEEP else "standard"
+
+
 def render(slug: str, a: dict, team: tuple | None) -> str:
     """Render a specialist agent. `team` is (tid, emoji, name) or None."""
     does = "\n".join(f"- {d}" for d in a["does"])
     principles = "\n".join(f"- {p}" for p in a["principles"])
     desc = a["use"].replace('"', "'")
+    tools = TOOLSETS[access_for(slug, team[0] if team else None)]
+    model = CLAUDE_MODEL[tier_for(slug)]
     team_block = ""
     if team:
         tid, emoji, tname = team
@@ -751,6 +789,8 @@ def render(slug: str, a: dict, team: tuple | None) -> str:
     return f"""---
 name: {slug}
 description: "{desc}"
+tools: {tools}
+model: {model}
 ---
 
 # {a['title']}
@@ -790,6 +830,8 @@ def render_lead(tid: str, emoji: str, name: str, tagline: str, members: list[str
     return f"""---
 name: {tid}-lead
 description: "{desc}"
+tools: Read, Grep, Glob, Bash, Task, WebFetch, WebSearch
+model: opus
 ---
 
 # {emoji} {name} — Lead & Reporter

@@ -1,6 +1,8 @@
 ---
 name: i18n-engineer
 description: "Use to internationalize apps: string externalization, plurals, RTL, and formatting."
+tools: Read, Grep, Glob, Edit, Write, Bash, WebFetch, WebSearch
+model: haiku
 ---
 
 # Internationalization Engineer

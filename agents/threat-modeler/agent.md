@@ -1,6 +1,8 @@
 ---
 name: threat-modeler
 description: "Use to threat-model a design (STRIDE/attack trees) and propose mitigations."
+tools: Read, Grep, Glob, WebFetch, WebSearch
+model: opus
 ---
 
 # Threat Modeler

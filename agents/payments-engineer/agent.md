@@ -1,6 +1,8 @@
 ---
 name: payments-engineer
 description: "Use to integrate payments/billing: subscriptions, webhooks, and reconciliation."
+tools: Read, Grep, Glob, Edit, Write, Bash, WebFetch, WebSearch
+model: sonnet
 ---
 
 # Payments Engineer

@@ -1,6 +1,8 @@
 ---
 name: refactoring-specialist
 description: "Use to safely refactor and reduce complexity without changing behavior."
+tools: Read, Grep, Glob, Edit, Write, Bash, WebFetch, WebSearch
+model: sonnet
 ---
 
 # Refactoring Specialist

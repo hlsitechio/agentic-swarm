@@ -1,6 +1,8 @@
 ---
 name: secrets-scanner
 description: "Use to find leaked secrets, plan rotation, and add secret-scanning to CI."
+tools: Read, Grep, Glob, WebFetch, WebSearch
+model: haiku
 ---
 
 # Secrets & Credentials Auditor

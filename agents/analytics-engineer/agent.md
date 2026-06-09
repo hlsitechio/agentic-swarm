@@ -1,6 +1,8 @@
 ---
 name: analytics-engineer
 description: "Use to build dbt models, a metrics layer, and tested warehouse datasets."
+tools: Read, Grep, Glob, Edit, Write, Bash, WebFetch, WebSearch
+model: sonnet
 ---
 
 # Analytics Engineer

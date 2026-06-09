@@ -1,6 +1,8 @@
 ---
 name: typescript-pro
 description: "Use for advanced TypeScript: precise types, generics, and strict configs."
+tools: Read, Grep, Glob, Edit, Write, Bash, WebFetch, WebSearch
+model: sonnet
 ---
 
 # TypeScript Pro

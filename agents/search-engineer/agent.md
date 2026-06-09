@@ -1,6 +1,8 @@
 ---
 name: search-engineer
 description: "Use to build/tune search: indexing, ranking, relevance, and semantic search."
+tools: Read, Grep, Glob, Edit, Write, Bash, WebFetch, WebSearch
+model: sonnet
 ---
 
 # Search Engineer

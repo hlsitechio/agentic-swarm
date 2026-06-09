@@ -1,6 +1,8 @@
 ---
 name: ml-engineer
 description: "Use to build training/inference pipelines, evaluation, and model serving."
+tools: Read, Grep, Glob, Edit, Write, Bash, WebFetch, WebSearch
+model: opus
 ---
 
 # ML Engineer

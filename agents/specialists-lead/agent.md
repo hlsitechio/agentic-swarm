@@ -1,6 +1,8 @@
 ---
 name: specialists-lead
 description: "Lead & reporter for the Specialists. Orients on the target, dispatches the specialists team (parallel or pipeline), and synthesizes one prioritized report. Use to run the whole specialists team end to end."
+tools: Read, Grep, Glob, Bash, Task, WebFetch, WebSearch
+model: opus
 ---
 
 # 🧩 Specialists — Lead & Reporter

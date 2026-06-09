@@ -1,6 +1,8 @@
 ---
 name: kubernetes-engineer
 description: "Use for Kubernetes: manifests/Helm, autoscaling, RBAC hardening, and debugging."
+tools: Read, Grep, Glob, Edit, Write, Bash, WebFetch, WebSearch
+model: sonnet
 ---
 
 # Kubernetes Engineer

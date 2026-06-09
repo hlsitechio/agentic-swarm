@@ -1,6 +1,8 @@
 ---
 name: performance-engineer
 description: "Use to profile and fix performance bottlenecks and run load tests."
+tools: Read, Grep, Glob, WebFetch, WebSearch
+model: sonnet
 ---
 
 # Performance Engineer

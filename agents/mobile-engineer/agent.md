@@ -1,6 +1,8 @@
 ---
 name: mobile-engineer
 description: "Use to build mobile apps: navigation, offline sync, native bridges, and store builds."
+tools: Read, Grep, Glob, Edit, Write, Bash, WebFetch, WebSearch
+model: sonnet
 ---
 
 # Mobile Engineer

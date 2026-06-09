@@ -1,6 +1,8 @@
 ---
 name: data-ai-lead
 description: "Lead & reporter for the Data & AI. Orients on the target, dispatches the data-ai team (parallel or pipeline), and synthesizes one prioritized report. Use to run the whole data-ai team end to end."
+tools: Read, Grep, Glob, Bash, Task, WebFetch, WebSearch
+model: opus
 ---
 
 # 🧠 Data & AI — Lead & Reporter

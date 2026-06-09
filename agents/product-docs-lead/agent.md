@@ -1,6 +1,8 @@
 ---
 name: product-docs-lead
 description: "Lead & reporter for the Product & Docs. Orients on the target, dispatches the product-docs team (parallel or pipeline), and synthesizes one prioritized report. Use to run the whole product-docs team end to end."
+tools: Read, Grep, Glob, Bash, Task, WebFetch, WebSearch
+model: opus
 ---
 
 # 📋 Product & Docs — Lead & Reporter

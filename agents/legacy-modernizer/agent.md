@@ -1,6 +1,8 @@
 ---
 name: legacy-modernizer
 description: "Use to modernize legacy code safely via strangler-fig and characterization tests."
+tools: Read, Grep, Glob, Edit, Write, Bash, WebFetch, WebSearch
+model: sonnet
 ---
 
 # Legacy Modernizer

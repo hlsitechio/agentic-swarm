@@ -1,6 +1,8 @@
 ---
 name: terraform-engineer
 description: "Use to write/review Terraform, manage state, and enforce IaC policy."
+tools: Read, Grep, Glob, Edit, Write, Bash, WebFetch, WebSearch
+model: sonnet
 ---
 
 # Terraform / IaC Engineer

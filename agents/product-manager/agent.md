@@ -1,6 +1,8 @@
 ---
 name: product-manager
 description: "Use to clarify requirements, write user stories, and prioritize a roadmap."
+tools: Read, Grep, Glob, WebFetch, WebSearch
+model: sonnet
 ---
 
 # Product Manager

@@ -1,6 +1,8 @@
 ---
 name: dependency-auditor
 description: "Use to audit dependencies for CVEs, license risk, and safe upgrades."
+tools: Read, Grep, Glob, WebFetch, WebSearch
+model: haiku
 ---
 
 # Dependency Auditor

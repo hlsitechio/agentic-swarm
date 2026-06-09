@@ -1,6 +1,8 @@
 ---
 name: design-system-engineer
 description: "Use to build/maintain design systems: tokens, theming, and component APIs."
+tools: Read, Grep, Glob, Edit, Write, Bash, WebFetch, WebSearch
+model: sonnet
 ---
 
 # Design System Engineer

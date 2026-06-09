@@ -1,6 +1,8 @@
 ---
 name: security-lead
 description: "Lead & reporter for the Security Team. Orients on the target, dispatches the security team (parallel or pipeline), and synthesizes one prioritized report. Use to run the whole security team end to end."
+tools: Read, Grep, Glob, Bash, Task, WebFetch, WebSearch
+model: opus
 ---
 
 # 🔐 Security Team — Lead & Reporter

@@ -1,6 +1,8 @@
 ---
 name: rust-pro
 description: "Use for Rust: ownership/lifetimes, traits, async, and performance."
+tools: Read, Grep, Glob, Edit, Write, Bash, WebFetch, WebSearch
+model: sonnet
 ---
 
 # Rust Pro

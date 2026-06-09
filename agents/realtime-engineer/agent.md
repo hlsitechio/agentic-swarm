@@ -1,6 +1,8 @@
 ---
 name: realtime-engineer
 description: "Use to build realtime features: WebSockets, SSE, pub/sub, presence, and backpressure."
+tools: Read, Grep, Glob, Edit, Write, Bash, WebFetch, WebSearch
+model: sonnet
 ---
 
 # Realtime Engineer

@@ -1,6 +1,8 @@
 ---
 name: go-pro
 description: "Use for idiomatic Go: concurrency, interfaces, error handling, and benchmarks."
+tools: Read, Grep, Glob, Edit, Write, Bash, WebFetch, WebSearch
+model: sonnet
 ---
 
 # Go Pro

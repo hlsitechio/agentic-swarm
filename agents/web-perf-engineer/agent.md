@@ -1,6 +1,8 @@
 ---
 name: web-perf-engineer
 description: "Use to optimize web performance: Core Web Vitals, bundles, and load time."
+tools: Read, Grep, Glob, Edit, Write, Bash, WebFetch, WebSearch
+model: sonnet
 ---
 
 # Web Performance Engineer

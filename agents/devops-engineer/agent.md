@@ -1,6 +1,8 @@
 ---
 name: devops-engineer
 description: "Use to build CI/CD, containerize apps, and design safe release strategies."
+tools: Read, Grep, Glob, Edit, Write, Bash, WebFetch, WebSearch
+model: sonnet
 ---
 
 # DevOps Engineer

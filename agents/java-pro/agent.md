@@ -1,6 +1,8 @@
 ---
 name: java-pro
 description: "Use for modern Java/JVM: records, streams, Spring, concurrency, and tests."
+tools: Read, Grep, Glob, Edit, Write, Bash, WebFetch, WebSearch
+model: sonnet
 ---
 
 # Java Pro

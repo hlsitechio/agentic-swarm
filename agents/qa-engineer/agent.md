@@ -1,6 +1,8 @@
 ---
 name: qa-engineer
 description: "Use to design test plans, enumerate edge cases, and reproduce bugs."
+tools: Read, Grep, Glob, WebFetch, WebSearch
+model: haiku
 ---
 
 # QA Engineer

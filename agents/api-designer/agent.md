@@ -1,6 +1,8 @@
 ---
 name: api-designer
 description: "Use to design or review HTTP/RPC APIs, write OpenAPI specs, and enforce contract consistency."
+tools: Read, Grep, Glob, WebFetch, WebSearch
+model: sonnet
 ---
 
 # API Designer

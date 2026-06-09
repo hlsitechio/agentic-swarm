@@ -1,6 +1,8 @@
 ---
 name: data-engineer
 description: "Use to build data pipelines, warehouse models, and data-quality checks."
+tools: Read, Grep, Glob, Edit, Write, Bash, WebFetch, WebSearch
+model: sonnet
 ---
 
 # Data Engineer

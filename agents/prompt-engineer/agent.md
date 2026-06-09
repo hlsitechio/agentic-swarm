@@ -1,6 +1,8 @@
 ---
 name: prompt-engineer
 description: "Use to design LLM prompts, tools, RAG, evals, and structured outputs."
+tools: Read, Grep, Glob, Edit, Write, Bash, WebFetch, WebSearch
+model: sonnet
 ---
 
 # Prompt / LLM Engineer

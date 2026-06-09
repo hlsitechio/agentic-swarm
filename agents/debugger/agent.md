@@ -1,6 +1,8 @@
 ---
 name: debugger
 description: "Use to track down hard bugs: reproduce, isolate, root-cause, and regression-test."
+tools: Read, Grep, Glob, Edit, Write, Bash, WebFetch, WebSearch
+model: sonnet
 ---
 
 # Debugger

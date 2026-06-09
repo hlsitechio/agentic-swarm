@@ -1,6 +1,8 @@
 ---
 name: react-specialist
 description: "Use for React architecture, hooks, render performance, and state management."
+tools: Read, Grep, Glob, Edit, Write, Bash, WebFetch, WebSearch
+model: sonnet
 ---
 
 # React Specialist

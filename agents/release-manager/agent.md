@@ -1,6 +1,8 @@
 ---
 name: release-manager
 description: "Use to plan releases, versioning, changelogs, and rollback procedures."
+tools: Read, Grep, Glob, Edit, Write, WebFetch, WebSearch
+model: haiku
 ---
 
 # Release Manager

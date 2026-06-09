@@ -1,6 +1,8 @@
 ---
 name: site-reliability-engineer
 description: "Use to define SLOs, design alerting/runbooks, and improve reliability."
+tools: Read, Grep, Glob, Edit, Write, Bash, WebFetch, WebSearch
+model: sonnet
 ---
 
 # Site Reliability Engineer

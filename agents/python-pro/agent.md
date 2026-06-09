@@ -1,6 +1,8 @@
 ---
 name: python-pro
 description: "Use for idiomatic, typed Python: async, packaging, pytest, and optimization."
+tools: Read, Grep, Glob, Edit, Write, Bash, WebFetch, WebSearch
+model: sonnet
 ---
 
 # Python Pro

@@ -1,6 +1,8 @@
 ---
 name: penetration-tester
 description: "Use for authorized offensive testing: enumeration, exploitation, and reporting."
+tools: Read, Grep, Glob, WebFetch, WebSearch
+model: opus
 ---
 
 # Penetration Tester

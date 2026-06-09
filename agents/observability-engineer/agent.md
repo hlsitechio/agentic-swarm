@@ -1,6 +1,8 @@
 ---
 name: observability-engineer
 description: "Use to instrument telemetry (metrics/logs/traces), dashboards, and alerts."
+tools: Read, Grep, Glob, Edit, Write, Bash, WebFetch, WebSearch
+model: sonnet
 ---
 
 # Observability Engineer

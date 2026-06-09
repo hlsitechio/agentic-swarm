@@ -1,6 +1,8 @@
 ---
 name: integration-architect
 description: "Use to design system-to-system integrations, event flows, webhooks, and resilient messaging."
+tools: Read, Grep, Glob, WebFetch, WebSearch
+model: sonnet
 ---
 
 # Integration Architect

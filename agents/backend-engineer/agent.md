@@ -1,6 +1,8 @@
 ---
 name: backend-engineer
 description: "Use to implement server-side endpoints, services, and business logic with tests."
+tools: Read, Grep, Glob, Edit, Write, Bash, WebFetch, WebSearch
+model: sonnet
 ---
 
 # Backend Engineer

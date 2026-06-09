@@ -1,6 +1,8 @@
 ---
 name: ux-researcher
 description: "Use to plan UX research, map journeys, and turn findings into decisions."
+tools: Read, Grep, Glob, WebFetch, WebSearch
+model: sonnet
 ---
 
 # UX Researcher

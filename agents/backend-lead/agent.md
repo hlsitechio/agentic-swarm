@@ -1,6 +1,8 @@
 ---
 name: backend-lead
 description: "Lead & reporter for the Backend Squad. Orients on the target, dispatches the backend team (parallel or pipeline), and synthesizes one prioritized report. Use to run the whole backend team end to end."
+tools: Read, Grep, Glob, Bash, Task, WebFetch, WebSearch
+model: opus
 ---
 
 # ⚙️ Backend Squad — Lead & Reporter

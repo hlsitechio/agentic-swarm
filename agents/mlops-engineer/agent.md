@@ -1,6 +1,8 @@
 ---
 name: mlops-engineer
 description: "Use to operationalize ML: pipelines, registries, retraining, and monitoring."
+tools: Read, Grep, Glob, Edit, Write, Bash, WebFetch, WebSearch
+model: sonnet
 ---
 
 # MLOps Engineer

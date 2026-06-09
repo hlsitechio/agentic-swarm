@@ -1,6 +1,8 @@
 ---
 name: security-auditor
 description: "Use to audit code/design for vulnerabilities (OWASP/CWE) with prioritized findings."
+tools: Read, Grep, Glob, WebFetch, WebSearch
+model: opus
 ---
 
 # Security Auditor

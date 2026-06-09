@@ -79,7 +79,22 @@ function loadCharacter(slug) {
     }
     body = raw.slice(m[0].length);
   }
-  return { slug, name: meta.name || slug, description: meta.description || "", body: body.trimStart() };
+  return {
+    slug,
+    name: meta.name || slug,
+    description: meta.description || "",
+    tools: meta.tools || "",
+    model: meta.model || "",
+    body: body.trimStart(),
+  };
+}
+
+// Derive an OpenCode permission block from a Claude-style tools allowlist.
+function permissionFromTools(tools) {
+  const has = (t) => new RegExp(`(^|,\\s*)${t}(\\s*,|$)`).test(tools);
+  const edit = tools && !(has("Edit") || has("Write")) ? "deny" : "allow";
+  const bash = tools && !has("Bash") ? "deny" : "allow";
+  return `permission:\n  edit: ${edit}\n  bash: ${bash}\n  read: allow`;
 }
 
 // ── target adapters ────────────────────────────────────────────────────────
@@ -93,8 +108,14 @@ const TARGETS = {
     label: "Claude Code",
     invoke: (n) => `the ${n} agent (auto-delegated, or "Use the ${n} agent…")`,
     dir: (project) => (project ? path.join(process.cwd(), ".claude", "agents") : path.join(os.homedir(), ".claude", "agents")),
-    render: (ch) =>
-      `---\nname: ${ch.slug}\ndescription: "${yamlEscape(ch.description)}"\n---\n\n${ch.body}`,
+    // tools: allowlist keeps the subagent from loading every MCP schema (big cost cut);
+    // model: sets the cost/quality tier per agent.
+    render: (ch) => {
+      let fm = `---\nname: ${ch.slug}\ndescription: "${yamlEscape(ch.description)}"`;
+      if (ch.tools) fm += `\ntools: ${ch.tools}`;
+      if (ch.model) fm += `\nmodel: ${ch.model}`;
+      return `${fm}\n---\n\n${ch.body}`;
+    },
     ext: ".md",
     // Leads install as a SLASH COMMAND, not a subagent: a subagent can't spawn
     // subagents in Claude Code, but a slash command runs in the main session and
@@ -102,8 +123,12 @@ const TARGETS = {
     lead: {
       dir: (project) => (project ? path.join(process.cwd(), ".claude", "commands") : path.join(os.homedir(), ".claude", "commands")),
       ext: ".md",
-      render: (ch) =>
-        `---\ndescription: "${yamlEscape(ch.description)}"\nargument-hint: "[target / scope]"\n---\n\n${ch.body}\n\n## This run\nTarget / scope for this run (if provided): $ARGUMENTS\n`,
+      render: (ch) => {
+        let fm = `---\ndescription: "${yamlEscape(ch.description)}"\nargument-hint: "[target / scope]"`;
+        if (ch.tools) fm += `\nallowed-tools: ${ch.tools}`;
+        if (ch.model) fm += `\nmodel: ${ch.model}`;
+        return `${fm}\n---\n\n${ch.body}\n\n## This run\nTarget / scope for this run (if provided): $ARGUMENTS\n`;
+      },
       invoke: (n) => `/${n}  (slash command — runs in your main session so it can dispatch the team)`,
     },
   },
@@ -120,7 +145,7 @@ const TARGETS = {
     invoke: (n) => `@${n} (subagent mention)`,
     dir: (project) => (project ? path.join(process.cwd(), ".opencode", "agents") : path.join(os.homedir(), ".config", "opencode", "agents")),
     render: (ch) =>
-      `---\ndescription: "${yamlEscape(ch.description)}"\nmode: subagent\n---\n\n${ch.body}`,
+      `---\ndescription: "${yamlEscape(ch.description)}"\nmode: subagent\n${permissionFromTools(ch.tools)}\n---\n\n${ch.body}`,
     ext: ".md",
     // Leads are a PRIMARY agent (can invoke subagents); specialists are subagents.
     lead: {

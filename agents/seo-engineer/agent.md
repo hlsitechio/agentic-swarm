@@ -1,6 +1,8 @@
 ---
 name: seo-engineer
 description: "Use for technical SEO: crawlability, structured data, sitemaps, and Core Web Vitals."
+tools: Read, Grep, Glob, Edit, Write, Bash, WebFetch, WebSearch
+model: haiku
 ---
 
 # Technical SEO Engineer

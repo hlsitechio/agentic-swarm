@@ -1,6 +1,8 @@
 ---
 name: data-scientist
 description: "Use for analysis, statistics, hypothesis testing, and clear data storytelling."
+tools: Read, Grep, Glob, WebFetch, WebSearch
+model: opus
 ---
 
 # Data Scientist

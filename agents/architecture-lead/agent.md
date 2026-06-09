@@ -1,6 +1,8 @@
 ---
 name: architecture-lead
 description: "Lead & reporter for the Architecture Guild. Orients on the target, dispatches the architecture team (parallel or pipeline), and synthesizes one prioritized report. Use to run the whole architecture team end to end."
+tools: Read, Grep, Glob, Bash, Task, WebFetch, WebSearch
+model: opus
 ---
 
 # 🏛️ Architecture Guild — Lead & Reporter

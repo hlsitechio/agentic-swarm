@@ -1,6 +1,8 @@
 ---
 name: tech-lead
 description: "Use to plan delivery, sequence work, identify risks, and set engineering standards."
+tools: Read, Grep, Glob, WebFetch, WebSearch
+model: sonnet
 ---
 
 # Tech Lead

@@ -1,6 +1,8 @@
 ---
 name: microservices-engineer
 description: "Use to design/build microservices, resilience patterns, and distributed transactions."
+tools: Read, Grep, Glob, Edit, Write, Bash, WebFetch, WebSearch
+model: sonnet
 ---
 
 # Microservices Engineer

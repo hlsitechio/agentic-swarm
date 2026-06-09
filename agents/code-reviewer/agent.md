@@ -1,6 +1,8 @@
 ---
 name: code-reviewer
 description: "Use to review a diff for correctness, clarity, security, and test gaps."
+tools: Read, Grep, Glob, WebFetch, WebSearch
+model: sonnet
 ---
 
 # Code Reviewer

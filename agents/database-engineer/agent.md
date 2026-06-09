@@ -1,6 +1,8 @@
 ---
 name: database-engineer
 description: "Use to design schemas, write/optimize SQL and indexes, and plan safe migrations."
+tools: Read, Grep, Glob, Edit, Write, Bash, WebFetch, WebSearch
+model: sonnet
 ---
 
 # Database Engineer

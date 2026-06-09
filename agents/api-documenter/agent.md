@@ -1,6 +1,8 @@
 ---
 name: api-documenter
 description: "Use to document APIs: references, quickstarts, examples, and changelogs."
+tools: Read, Grep, Glob, Edit, Write, WebFetch, WebSearch
+model: haiku
 ---
 
 # API Documenter

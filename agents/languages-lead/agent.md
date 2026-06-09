@@ -1,6 +1,8 @@
 ---
 name: languages-lead
 description: "Lead & reporter for the Language Pros. Orients on the target, dispatches the languages team (parallel or pipeline), and synthesizes one prioritized report. Use to run the whole languages team end to end."
+tools: Read, Grep, Glob, Bash, Task, WebFetch, WebSearch
+model: opus
 ---
 
 # 🔤 Language Pros — Lead & Reporter

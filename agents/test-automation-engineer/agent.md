@@ -1,6 +1,8 @@
 ---
 name: test-automation-engineer
 description: "Use to build/repair automated test suites and kill flaky tests."
+tools: Read, Grep, Glob, Edit, Write, Bash, WebFetch, WebSearch
+model: sonnet
 ---
 
 # Test Automation Engineer

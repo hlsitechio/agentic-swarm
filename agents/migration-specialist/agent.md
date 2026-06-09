@@ -1,6 +1,8 @@
 ---
 name: migration-specialist
 description: "Use to plan safe, phased data/system migrations with rollback."
+tools: Read, Grep, Glob, Edit, Write, Bash, WebFetch, WebSearch
+model: sonnet
 ---
 
 # Migration Specialist

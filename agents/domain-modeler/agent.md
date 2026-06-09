@@ -1,6 +1,8 @@
 ---
 name: domain-modeler
 description: "Use for DDD modeling: bounded contexts, aggregates, and a ubiquitous language."
+tools: Read, Grep, Glob, WebFetch, WebSearch
+model: opus
 ---
 
 # Domain Modeler

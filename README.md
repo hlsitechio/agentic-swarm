@@ -127,6 +127,22 @@ npx github:hlsitechio/agentic-swarm spawn security --target=claude,vscode,codex,
 
 ---
 
+## 🛡️ Guardrails & cost
+
+Every agent ships with a **scoped tool allowlist** and a **model tier** — which keeps the swarm safe *and* cheap:
+
+- **Read-only where it matters.** Auditors, reviewers, architects and planners get only `Read/Grep/Glob` —
+  they **cannot** edit files or run commands. Engineers get `Edit/Write`; DevOps gets `Bash`. Enforced via
+  Claude Code `tools:` and OpenCode `permission:`.
+- **Big cost cut.** A scoped `tools:` list stops each subagent from loading your **entire MCP catalog** into
+  its context — often a **3–4× token reduction** per agent (the hidden tax on unrestricted swarms).
+- **Model tiers.** Mechanical agents run on **Haiku**, most engineers on **Sonnet**, deep-reasoning agents and
+  team leads on **Opus** — quality where it counts, cheap where it doesn't.
+
+Retune in [`scripts/generate.py`](scripts/generate.py) (`ACCESS_*`, `TIER_*`) and run `python scripts/generate.py`.
+
+---
+
 ## 👥 The roster — 70 agents in 10 teams
 
 Each team has a **`<team>-lead`** that orients on your codebase, dispatches its specialists (parallel or pipeline), and writes one consolidated report — plus **6 specialists**. In Claude Code the lead installs as a **`/<team>-lead` slash command** (it runs in your main session, so it can actually dispatch the specialist subagents — a subagent can't); in OpenCode it's a **primary agent**. Deploy a whole **team** to cover a domain end-to-end, or a single **agent** for a precise task.
