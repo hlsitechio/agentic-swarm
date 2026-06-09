@@ -292,6 +292,7 @@ ${bold("Commands")}
   list [team]            List all teams, or one team's agents
   add  <name...>         Install agent(s) and/or whole team(s)
   remove <name...>       Uninstall agent(s)/team(s)
+  <team|agent> [flags]   Shorthand for "add <team|agent>"
   help                   Show this help
 
 ${bold("Flags")}
@@ -305,6 +306,7 @@ ${bold("Flags")}
 ${bold("Examples")}
   npx github:hlsitechio/agentic-swarm list
   npx github:hlsitechio/agentic-swarm add security
+  npx github:hlsitechio/agentic-swarm backend            # shorthand: team name = command
   npx github:hlsitechio/agentic-swarm add code-reviewer debugger --target=opencode
   npx github:hlsitechio/agentic-swarm add backend --target=claude,cursor --project
   npx github:hlsitechio/agentic-swarm remove data-ai
@@ -344,10 +346,19 @@ function main() {
       console.log(pkg.version);
       break;
     }
-    default:
+    default: {
+      // Shorthand: a team or agent name used directly IS the command.
+      //   npx … backend            → add backend
+      //   npx … security --project → add security --project
+      const key = cmd.toLowerCase();
+      if (teams[key] || characters.includes(key)) {
+        cmdAdd([cmd, ...positional], teams, characters, flags);
+        break;
+      }
       console.log(red(`unknown command: ${cmd}`));
       help();
       process.exit(1);
+    }
   }
 }
 

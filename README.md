@@ -60,6 +60,9 @@ npx github:hlsitechio/agentic-swarm add backend
 
 # 3. Or grab one agent — for any tool
 npx github:hlsitechio/agentic-swarm add code-reviewer --target=vscode --project
+
+# Shortcut: the team name is itself a command
+npx github:hlsitechio/agentic-swarm security
 ```
 
 Then invoke it: in Claude Code say *“use the code-reviewer agent”*; in VS Code pick it from the Chat
@@ -153,6 +156,7 @@ Commands
   list [team]          List all teams, or one team's agents
   add  <name...>       Install agent(s) and/or whole team(s)
   remove <name...>     Uninstall agent(s)/team(s)
+  <team|agent>         Shorthand for "add <team|agent>"  (e.g. `… backend`)
   help                 Show help
 
 Flags
