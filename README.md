@@ -2,199 +2,228 @@
 
 # 🐝 Agentic Swarm
 
-### A swarm of 60 specialist engineering agents — organized into teams, installed with one command.
+### Write your AI coding agents **once**. Deploy them into **any** tool in seconds.
 
-**Pick a team. Run one command. Your coding assistant gains a full squad of specialists.**
+Claude Code · VS Code · Codex · OpenCode · Cursor · Pi — same agents, one command.
 
-[![Claude Code](https://img.shields.io/badge/Claude_Code-Compatible-blueviolet?style=flat-square&logo=anthropic)](https://code.claude.com)
-[![Codex](https://img.shields.io/badge/Codex-Compatible-black?style=flat-square&logo=openai)](https://developers.openai.com/codex)
-[![OpenCode](https://img.shields.io/badge/OpenCode-Compatible-00bcd4?style=flat-square)](https://opencode.ai)
-[![Cursor](https://img.shields.io/badge/Cursor-Compatible-blue?style=flat-square)](https://cursor.com)
-[![VS Code](https://img.shields.io/badge/VS_Code-Compatible-007ACC?style=flat-square&logo=visualstudiocode)](https://code.visualstudio.com)
+[![Claude Code](https://img.shields.io/badge/Claude_Code-✓-blueviolet?style=flat-square&logo=anthropic)](https://code.claude.com)
+[![VS Code](https://img.shields.io/badge/VS_Code-✓-007ACC?style=flat-square&logo=visualstudiocode)](https://code.visualstudio.com)
+[![Codex](https://img.shields.io/badge/Codex-✓-black?style=flat-square&logo=openai)](https://developers.openai.com/codex)
+[![OpenCode](https://img.shields.io/badge/OpenCode-✓-00bcd4?style=flat-square)](https://opencode.ai)
+[![Cursor](https://img.shields.io/badge/Cursor-✓-blue?style=flat-square)](https://cursor.com)
+[![Pi](https://img.shields.io/badge/Pi-✓-ff5c8a?style=flat-square)](https://pi.dev)
+<br>
 [![Agents](https://img.shields.io/badge/Agents-60-orange?style=flat-square)]()
 [![Teams](https://img.shields.io/badge/Teams-10-success?style=flat-square)]()
+[![Install](https://img.shields.io/badge/install-npx-cb3837?style=flat-square&logo=npm)]()
 [![License](https://img.shields.io/badge/License-MIT-yellow?style=flat-square)]()
 
 </div>
 
 ---
 
-## The problem
+## 🎯 The problem
 
-Every time you try a new coding tool — **VS Code, Codex, OpenCode, Cursor, Pi, Claude Code** — you
-rebuild your agents from scratch. Different folders, different file formats, different frontmatter.
-That reviewer, security auditor, or architect you carefully tuned? It doesn't come with you, so you
-stop and recreate it. Again.
+You tune a great set of agents — a sharp code reviewer, a security auditor, a database expert.
+Then you try a new tool, and… you start over.
 
-**Agentic Swarm fixes that.** Define your agents **once**; deploy the whole swarm into any tool in
-seconds. Switch tools — or onboard a teammate — without losing your squad.
+Every assistant stores agents differently: **Claude Code** wants `~/.claude/agents/*.md`, **VS Code**
+wants `.github/agents/*.agent.md`, **Cursor** wants `.cursor/rules/*.mdc`, **Codex** wants
+`~/.codex/prompts/`, **OpenCode** and **Pi** want their own folders and frontmatter. So your agents
+get left behind every time you switch — and you rebuild them by hand. Again.
 
-## What is this?
+## ✅ The fix
 
-A curated library of **60 specialist software-engineering agents**, sorted into **10 teams**, that
-install into your coding assistant with **one command** — no cloning, no copy-paste.
+**Agentic Swarm is a portable agent library.** Define an agent once; the CLI translates it into each
+tool's native format and drops it in the right place. Switch tools, set up a new laptop, or onboard a
+teammate — your whole swarm comes with you.
 
-Each agent is a focused expert with a real, production-minded system prompt: a security auditor, a
-database engineer, a React specialist, an SRE. Deploy a whole **team** to cover a domain end-to-end,
-or drop in a single agent for a precise task.
+| | Without Agentic Swarm | With Agentic Swarm |
+|---|---|---|
+| New tool | Recreate every agent by hand | `npx … add <team>` — done |
+| Formats | Learn each tool's frontmatter & paths | Handled for you |
+| Sharing | "Here, copy-paste these prompts" | One command |
+| Source of truth | Scattered across machines | One repo |
 
-**One definition → every tool.** The same agents install natively into **Claude Code, VS Code
-(Copilot), Codex, OpenCode, Cursor, and Pi**.
+---
 
-## ⚡ Quick start
+## 🚀 Quick start
 
 ```bash
-# Browse the teams
+# 1. See what's available
 npx github:hlsitechio/agentic-swarm list
 
-# Deploy a whole team into Claude Code (global)
+# 2. Deploy a whole team into Claude Code (the default)
 npx github:hlsitechio/agentic-swarm add backend
 
-# Or a single agent
-npx github:hlsitechio/agentic-swarm add code-reviewer
+# 3. Or grab one agent — for any tool
+npx github:hlsitechio/agentic-swarm add code-reviewer --target=vscode --project
 ```
 
-Then in Claude Code, say *"Use the code-reviewer agent on this diff"* — or let it auto-delegate. ✅
+Then invoke it: in Claude Code say *“use the code-reviewer agent”*; in VS Code pick it from the Chat
+agents dropdown; in OpenCode/Cursor type `@code-reviewer`. Same agent, every tool.
 
-> **No Node?** One-line installer (Claude Code, macOS/Linux):
+> **No Node installed?** One-liner for Claude Code:
 > ```bash
+> # macOS / Linux
 > curl -fsSL https://raw.githubusercontent.com/hlsitechio/agentic-swarm/main/install.sh | sh -s security
 > ```
-> Windows PowerShell:
 > ```powershell
+> # Windows PowerShell
 > irm https://raw.githubusercontent.com/hlsitechio/agentic-swarm/main/install.ps1 | iex; Install-Swarm security
 > ```
 
-## 🎯 Works with your assistant
+---
 
-One command, many tools. Choose your target with `--target`:
+## 🧩 Supported tools
 
-| Tool | Installs to | How you invoke it | Flag |
-|------|-------------|-------------------|------|
-| **Claude Code** | `~/.claude/agents/` | auto-delegate · `/agents` | *(default)* |
-| **VS Code (Copilot)** | `.github/agents/` *(project)* · `~/.copilot/agents/` | agents dropdown | `--target=vscode` |
-| **OpenCode** | `~/.config/opencode/agents/` | `@agent` | `--target=opencode` |
-| **Codex CLI** | `~/.codex/prompts/` | `/prompts:agent` | `--target=codex` |
-| **Cursor** | `.cursor/rules/` *(project)* | `@agent` in chat | `--target=cursor` |
-| **Pi** | `~/.pi/agent/prompts/` | `/agent` | `--target=pi` |
-| **Anything** | `./agentic-swarm-agents/` | reference the `.md` | `--target=generic` |
+Pick where agents land with `--target` (default: `claude`). Use `--project` for the current repo or
+`--global` for your user config.
+
+| Tool | `--target` | Installs to | Invoke with |
+|------|-----------|-------------|-------------|
+| **Claude Code** | `claude` *(default)* | `~/.claude/agents/` · `.claude/agents/` | auto-delegate · `/agents` |
+| **VS Code (Copilot)** | `vscode` | `.github/agents/` · `~/.copilot/agents/` | Chat **agents dropdown** |
+| **Codex CLI** | `codex` | `~/.codex/prompts/` | `/prompts:<agent>` |
+| **OpenCode** | `opencode` | `~/.config/opencode/agents/` · `.opencode/agents/` | `@<agent>` |
+| **Cursor** | `cursor` | `.cursor/rules/` *(project)* | `@<agent>` in chat |
+| **Pi** | `pi` | `~/.pi/agent/prompts/` · `.pi/prompts/` | `/<agent>` |
+| **Anything else** | `generic` | `./agentic-swarm-agents/` | reference the `.md` |
 
 ```bash
-# Same agents, any tool:
-npx github:hlsitechio/agentic-swarm add devops --target=vscode --project
-npx github:hlsitechio/agentic-swarm add backend --target=opencode
-npx github:hlsitechio/agentic-swarm add quality --target=cursor --project
-npx github:hlsitechio/agentic-swarm add code-reviewer --target=claude,codex   # multiple at once
+# Deploy the same team into several tools at once:
+npx github:hlsitechio/agentic-swarm add security --target=claude,vscode,codex,opencode
 ```
 
-Use `--project` to install into the current repo instead of your global config, and `--dry-run`
-to preview first.
-
 ---
 
-## 🧩 The teams
+## 👥 The roster — 60 agents in 10 teams
 
-Deploy a **team** to cover a domain; deploy a single **agent** for a precise task.
+Deploy a **team** to cover a domain end-to-end, or a single **agent** for a precise task.
+Run `list <team>` to see each agent's description.
 
-### 🏛️ `architecture` — Architecture Guild
-*Design systems, APIs & boundaries*
+<table>
+<tr><td valign="top" width="50%">
+
+**🏛️ `architecture`** — *systems, APIs & boundaries*
 `solution-architect` · `api-designer` · `domain-modeler` · `cloud-architect` · `tech-lead` · `integration-architect`
 
-### ⚙️ `backend` — Backend Squad
-*Server-side services & data*
+**⚙️ `backend`** — *server-side & data*
 `backend-engineer` · `microservices-engineer` · `database-engineer` · `graphql-engineer` · `realtime-engineer` · `caching-engineer`
 
-### 🎨 `frontend` — Frontend Squad
-*UI, client logic & UX delivery*
+**🎨 `frontend`** — *UI, client & UX delivery*
 `frontend-engineer` · `react-specialist` · `design-system-engineer` · `accessibility-engineer` · `mobile-engineer` · `web-perf-engineer`
 
-### 🔤 `languages` — Language Pros
-*Deep per-language expertise*
+**🔤 `languages`** — *deep per-language pros*
 `python-pro` · `typescript-pro` · `go-pro` · `rust-pro` · `java-pro` · `csharp-pro`
 
-### ✅ `quality` — Quality Crew
-*Correctness, tests & performance*
+**✅ `quality`** — *correctness, tests & perf*
 `code-reviewer` · `qa-engineer` · `test-automation-engineer` · `performance-engineer` · `refactoring-specialist` · `debugger`
 
-### 🔐 `security` — Security Team
-*AppSec, offense & supply chain*
+</td><td valign="top" width="50%">
+
+**🔐 `security`** — *appsec, offense & supply chain*
 `security-auditor` · `appsec-engineer` · `penetration-tester` · `secrets-scanner` · `dependency-auditor` · `threat-modeler`
 
-### 🚀 `devops` — DevOps & SRE
-*Ship, scale & operate*
+**🚀 `devops`** — *ship, scale & operate*
 `devops-engineer` · `site-reliability-engineer` · `kubernetes-engineer` · `ci-cd-engineer` · `terraform-engineer` · `observability-engineer`
 
-### 🧠 `data-ai` — Data & AI
-*Pipelines, models & LLM apps*
+**🧠 `data-ai`** — *pipelines, models & LLM apps*
 `data-engineer` · `ml-engineer` · `data-scientist` · `mlops-engineer` · `analytics-engineer` · `prompt-engineer`
 
-### 📋 `product-docs` — Product & Docs
-*Plan, document & communicate*
+**📋 `product-docs`** — *plan, document & communicate*
 `product-manager` · `technical-writer` · `ux-researcher` · `api-documenter` · `release-manager` · `project-planner`
 
-### 🧩 `specialists` — Specialists
-*Targeted, high-leverage expertise*
+**🧩 `specialists`** — *targeted, high-leverage*
 `migration-specialist` · `legacy-modernizer` · `payments-engineer` · `search-engineer` · `i18n-engineer` · `seo-engineer`
 
-> Browse any team's agents and their descriptions: `npx github:hlsitechio/agentic-swarm list <team>`
+</td></tr>
+</table>
 
 ---
 
-## 🧰 CLI reference
+## 🧰 CLI
 
 ```text
 npx github:hlsitechio/agentic-swarm <command> [names...] [flags]
 
 Commands
-  list [team]            List all teams, or one team's agents
-  add  <name...>         Install agent(s) and/or whole team(s)
-  remove <name...>       Uninstall agent(s)/team(s)
-  help                   Show help
+  list [team]          List all teams, or one team's agents
+  add  <name...>       Install agent(s) and/or whole team(s)
+  remove <name...>     Uninstall agent(s)/team(s)
+  help                 Show help
 
 Flags
-  --target=<t[,t...]>    claude (default), codex, opencode, cursor, pi, generic
-  --project              Install into ./ (project) instead of global config
-  --global               Force global install
-  --out=<dir>            Custom output dir for the 'generic' target
-  --force                Overwrite existing files
-  --dry-run              Preview without writing
+  --target=<t[,t...]>  claude (default), vscode, codex, opencode, cursor, pi, generic
+  --project            Install into ./ (this repo) instead of global config
+  --global             Force global install
+  --out=<dir>          Custom output dir for the 'generic' target
+  --force              Overwrite existing files
+  --dry-run            Preview without writing
 ```
 
-## 🧱 How it's built
+**Examples**
 
-Each agent is stored **once** as a canonical Markdown file with frontmatter:
+```bash
+npx github:hlsitechio/agentic-swarm list security
+npx github:hlsitechio/agentic-swarm add quality --target=vscode --project
+npx github:hlsitechio/agentic-swarm add python-pro typescript-pro --target=opencode
+npx github:hlsitechio/agentic-swarm remove data-ai
+```
+
+---
+
+## ⚙️ How it works
+
+Each agent is stored **once**, as a canonical Markdown file with frontmatter:
 
 ```
 agents/<slug>/agent.md     # name + description + system prompt
 teams/<id>.json            # which agents belong to a team
 ```
 
-The CLI's **adapters** transform that canonical form into each tool's required format and path
-(verified against each tool's current docs). One source of truth, six output targets.
+When you `add`, an **adapter** per tool rewrites that canonical file into the target's required
+format (frontmatter keys, file extension) and writes it to the correct directory — paths verified
+against each tool's current docs. **One definition, six outputs.**
 
-Everything is generated from a single file — `scripts/generate.py` defines the full roster and
-teams, then writes `agents/` and `teams/`. To add or edit agents, edit that script and run it.
+Everything is generated from a single source of truth — [`scripts/generate.py`](scripts/generate.py)
+defines the full roster and teams, then emits `agents/` and `teams/`.
+
+---
+
+## ❓ FAQ
+
+**Do these replace my tool's built-in agent?** No — they're added alongside, invoked by name.
+
+**Will `add` clobber my existing files?** No. It skips files that already exist unless you pass `--force`.
+
+**Global or project?** Most tools support both. `--project` keeps agents with the repo (commit them,
+share with the team); the default is your global user config. Cursor is project-only; Codex is global-only.
+
+**Can I customize the agents?** Yes — fork, edit `scripts/generate.py`, run it, and install from your fork.
+
+---
 
 ## 🤝 Contributing
 
 1. Fork this repo
-2. Add an entry to `AGENTS` in [`scripts/generate.py`](scripts/generate.py) (title, role, responsibilities, principles, description)
+2. Add an entry to `AGENTS` in [`scripts/generate.py`](scripts/generate.py) — `title`, `role`, `does`, `principles`, `use`
 3. Add the slug to one or more teams in `TEAMS`
 4. Run `python scripts/generate.py` and commit the generated files
 5. Open a PR
+
+---
 
 ## 🔗 Related
 
 - [**claude-crew**](https://github.com/hlsitechio/claude-crew) — production agent presets for Claude Code
 - [**claude-memory**](https://github.com/hlsitechio/claude-memory) — persistent memory for Claude Code sessions
 
----
-
 <div align="center">
 
-**60 agents. 10 teams. One command.**
+---
 
-*Real engineering specialists, ready for Claude Code, VS Code, Codex, OpenCode, Cursor & Pi.*
+**Write once. Deploy anywhere.** · 60 agents · 10 teams · 6 tools · one command.
 
 MIT License
 
