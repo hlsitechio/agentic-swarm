@@ -2,16 +2,16 @@
 
 # 🐝 Agentic Swarm
 
-### Deployable swarms of specialist AI agents — organized into teams, installed with one command.
+### A swarm of 60 specialist engineering agents — organized into teams, installed with one command.
 
-**Pick a team. Run one command. Your coding assistant gains a whole squad of specialists.**
+**Pick a team. Run one command. Your coding assistant gains a full squad of specialists.**
 
 [![Claude Code](https://img.shields.io/badge/Claude_Code-Compatible-blueviolet?style=flat-square&logo=anthropic)](https://code.claude.com)
 [![Codex](https://img.shields.io/badge/Codex-Compatible-black?style=flat-square&logo=openai)](https://developers.openai.com/codex)
 [![OpenCode](https://img.shields.io/badge/OpenCode-Compatible-00bcd4?style=flat-square)](https://opencode.ai)
 [![Cursor](https://img.shields.io/badge/Cursor-Compatible-blue?style=flat-square)](https://cursor.com)
-[![Agents](https://img.shields.io/badge/Agents-70-orange?style=flat-square)]()
-[![Teams](https://img.shields.io/badge/Teams-15-success?style=flat-square)]()
+[![Agents](https://img.shields.io/badge/Agents-60-orange?style=flat-square)]()
+[![Teams](https://img.shields.io/badge/Teams-10-success?style=flat-square)]()
 [![License](https://img.shields.io/badge/License-MIT-yellow?style=flat-square)]()
 
 </div>
@@ -20,37 +20,38 @@
 
 ## What is this?
 
-**Agentic Swarm** is a library of **70 specialist AI agents**, sorted into **15 teams (swarms)**,
-that you install into your coding assistant with **one command** — no cloning, no copy-paste.
+**Agentic Swarm** is a curated library of **60 specialist software-engineering agents**, sorted into
+**10 teams**, that you install into your coding assistant with **one command** — no cloning, no copy-paste.
 
-Each agent has a distinct voice and a focus: a brutal code reviewer, a calm architect, a relentless
-bug hunter, a hype coach. Deploy a whole **swarm** when you want a job covered from every angle, or
-drop in a single agent when you want one voice.
+Each agent is a focused expert with a real, production-minded system prompt: a security auditor, a
+database engineer, a React specialist, an SRE. Deploy a whole **team** to cover a domain end-to-end,
+or drop in a single agent for a precise task.
 
-**Every agent is technically accurate.** The advice is real engineering. The delivery has character.
+Works with **Claude Code, Codex, OpenCode, Cursor, and Pi** — the same agents, installed in each
+tool's native format.
 
 ## ⚡ Quick start
 
 ```bash
-# Browse the swarms
+# Browse the teams
 npx github:hlsitechio/agentic-swarm list
 
 # Deploy a whole team into Claude Code (global)
-npx github:hlsitechio/agentic-swarm add roast-squad
+npx github:hlsitechio/agentic-swarm add backend
 
 # Or a single agent
-npx github:hlsitechio/agentic-swarm add gandalf
+npx github:hlsitechio/agentic-swarm add code-reviewer
 ```
 
-Then in Claude Code, say *"Use the gordon-ramsay agent to review this PR"* — or let it auto-delegate. ✅
+Then in Claude Code, say *"Use the code-reviewer agent on this diff"* — or let it auto-delegate. ✅
 
 > **No Node?** One-line installer (Claude Code, macOS/Linux):
 > ```bash
-> curl -fsSL https://raw.githubusercontent.com/hlsitechio/agentic-swarm/main/install.sh | sh -s roast-squad
+> curl -fsSL https://raw.githubusercontent.com/hlsitechio/agentic-swarm/main/install.sh | sh -s security
 > ```
 > Windows PowerShell:
 > ```powershell
-> irm https://raw.githubusercontent.com/hlsitechio/agentic-swarm/main/install.ps1 | iex; Install-Swarm roast-squad
+> irm https://raw.githubusercontent.com/hlsitechio/agentic-swarm/main/install.ps1 | iex; Install-Swarm security
 > ```
 
 ## 🎯 Works with your assistant
@@ -68,9 +69,9 @@ One command, many tools. Choose your target with `--target`:
 
 ```bash
 # Same agents, any tool:
-npx github:hlsitechio/agentic-swarm add wise-council --target=opencode
-npx github:hlsitechio/agentic-swarm add detective-agency --target=cursor --project
-npx github:hlsitechio/agentic-swarm add gandalf --target=claude,codex   # multiple at once
+npx github:hlsitechio/agentic-swarm add devops --target=opencode
+npx github:hlsitechio/agentic-swarm add quality --target=cursor --project
+npx github:hlsitechio/agentic-swarm add code-reviewer --target=claude,codex   # multiple at once
 ```
 
 Use `--project` to install into the current repo instead of your global config, and `--dry-run`
@@ -78,58 +79,51 @@ to preview first.
 
 ---
 
-## 🧩 The swarms
+## 🧩 The teams
 
-Deploy a **team** for a whole vibe; deploy a single **agent** for one voice.
+Deploy a **team** to cover a domain; deploy a single **agent** for a precise task.
 
-### 🛠️ Functional swarms — *deploy a team for a job*
+### 🏛️ `architecture` — Architecture Guild
+*Design systems, APIs & boundaries*
+`solution-architect` · `api-designer` · `domain-modeler` · `cloud-architect` · `tech-lead` · `integration-architect`
 
-| Team | | For | Agents |
-|------|--|-----|--------|
-| 🔥 `roast-squad` | **The Roast Squad** | Brutal, high-standards code review | Gordon Ramsay · Snape · Drill Sergeant · Darth Vader · Thanos · The Hound · Villain · Samuel L. Jackson |
-| 🧠 `wise-council` | **The Wise Council** | Architecture & deep guidance | Gandalf · Yoda · Obi-Wan · Dumbledore · Professor · Sherlock · Zen Master · Bartender |
-| 🤗 `comfort-crew` | **The Comfort Crew** | Gentle, beginner-friendly help | Bob Ross · Mr. Rogers · Grandma · Morgan Freeman · Therapist · Hagrid · Dobby |
-| 💪 `hype-squad` | **The Hype Squad** | Motivation & energy | Coach · Motivational Speaker · Wrestler · Sports Commentator · Thor · Dog · Hulk · Superhero |
-| 🔍 `detective-agency` | **The Detective Agency** | Bug hunting & investigation | Noir Detective · Sherlock · Conspiracy Theorist · Time Traveler · Escape Room · Ghost · Robot |
-| 😂 `comedy-club` | **The Comedy Club** | Pure levity | Stand-up · Reality TV · Auctioneer · Valley Girl · Texting Teen · Surfer · Karen · Cat · Old-Timer |
-| 🎙️ `narrators` | **The Narrators** | Narrate your session | Morgan Freeman · David Attenborough · News Anchor · Weather Reporter · Movie Trailer · Sports Commentator · Dungeon Master |
-| 🎨 `creative-studio` | **The Creative Studio** | Code as art | Poet · Rapper · Jazz Musician · Shakespeare · Bob Ross |
+### ⚙️ `backend` — Backend Squad
+*Server-side services & data*
+`backend-engineer` · `microservices-engineer` · `database-engineer` · `graphql-engineer` · `realtime-engineer` · `caching-engineer`
 
-### 🌌 Universe swarms — *assemble your favorite franchise*
+### 🎨 `frontend` — Frontend Squad
+*UI, client logic & UX delivery*
+`frontend-engineer` · `react-specialist` · `design-system-engineer` · `accessibility-engineer` · `mobile-engineer` · `web-perf-engineer`
 
-| Team | | Agents |
-|------|--|--------|
-| ⚔️ `middle-earth` | **The Fellowship** | Gandalf · Gollum · Aragorn · Medieval Knight |
-| 🧙 `hogwarts` | **Hogwarts Faculty** | Dumbledore · Snape · Dobby · Hagrid |
-| 🦸 `avengers` | **The Avengers** | Tony Stark · Thor · Hulk · Thanos |
-| 🌌 `galactic-order` | **The Galactic Order** | Darth Vader · Obi-Wan · C-3PO · Yoda |
-| 🐉 `westeros` | **The Westeros Court** | Tyrion · Hodor · The Hound · Jon Snow |
-| ⚡ `norse-raiders` | **The Norse Raiders** | Ragnar · Floki · Thor |
-| 🌍 `world-tour` | **The World Tour** | Aussie · Italian Chef · Surfer · Pirate · Astronaut · Alien |
+### 🔤 `languages` — Language Pros
+*Deep per-language expertise*
+`python-pro` · `typescript-pro` · `go-pro` · `rust-pro` · `java-pro` · `csharp-pro`
 
-> Agents can appear in more than one swarm — teams are curated rosters, not exclusive buckets.
+### ✅ `quality` — Quality Crew
+*Correctness, tests & performance*
+`code-reviewer` · `qa-engineer` · `test-automation-engineer` · `performance-engineer` · `refactoring-specialist` · `debugger`
 
----
+### 🔐 `security` — Security Team
+*AppSec, offense & supply chain*
+`security-auditor` · `appsec-engineer` · `penetration-tester` · `secrets-scanner` · `dependency-auditor` · `threat-modeler`
 
-## 🎬 The full roster (70 agents)
+### 🚀 `devops` — DevOps & SRE
+*Ship, scale & operate*
+`devops-engineer` · `site-reliability-engineer` · `kubernetes-engineer` · `ci-cd-engineer` · `terraform-engineer` · `observability-engineer`
 
-<details>
-<summary><b>Click to expand all 70 agents</b></summary>
+### 🧠 `data-ai` — Data & AI
+*Pipelines, models & LLM apps*
+`data-engineer` · `ml-engineer` · `data-scientist` · `mlops-engineer` · `analytics-engineer` · `prompt-engineer`
 
-Gordon Ramsay · Yoda · Bob Ross · Noir Detective · David Attenborough · Dungeon Master · Coach ·
-Drill Sergeant · Wrestler · Sports Commentator · Samuel L. Jackson · Motivational Speaker ·
-Stand-up Comedian · Movie Trailer · Pirate · Conspiracy Theorist · Auctioneer · Reality TV ·
-Morgan Freeman · Mr. Rogers · Zen Master · Professor · Bartender · Grandma · Shakespeare ·
-Sherlock Holmes · Medieval Knight · Superhero · Villain · Ghost · Aussie · Italian Chef · Surfer ·
-Robot · Alien · Time Traveler · Astronaut · Cat · Dog · Karen · Texting Teen · Valley Girl ·
-Old-Timer · Poet · Rapper · Jazz Musician · News Anchor · Weather Reporter · Therapist ·
-Escape Room · Dumbledore · Snape · Dobby · Hagrid · Gandalf · Gollum · Aragorn · Darth Vader ·
-Obi-Wan · C-3PO · Tony Stark · Thor · Hulk · Thanos · Tyrion · Hodor · The Hound · Jon Snow ·
-Ragnar · Floki
+### 📋 `product-docs` — Product & Docs
+*Plan, document & communicate*
+`product-manager` · `technical-writer` · `ux-researcher` · `api-documenter` · `release-manager` · `project-planner`
 
-Each lives in [`agents/<name>/agent.md`](agents/) with ready-to-use frontmatter.
+### 🧩 `specialists` — Specialists
+*Targeted, high-leverage expertise*
+`migration-specialist` · `legacy-modernizer` · `payments-engineer` · `search-engineer` · `i18n-engineer` · `seo-engineer`
 
-</details>
+> Browse any team's agents and their descriptions: `npx github:hlsitechio/agentic-swarm list <team>`
 
 ---
 
@@ -139,7 +133,7 @@ Each lives in [`agents/<name>/agent.md`](agents/) with ready-to-use frontmatter.
 npx github:hlsitechio/agentic-swarm <command> [names...] [flags]
 
 Commands
-  list [team]            List all swarms, or one team's agents
+  list [team]            List all teams, or one team's agents
   add  <name...>         Install agent(s) and/or whole team(s)
   remove <name...>       Uninstall agent(s)/team(s)
   help                   Show help
@@ -153,36 +147,41 @@ Flags
   --dry-run              Preview without writing
 ```
 
-## 🙋 Manual install (no CLI)
+## 🧱 How it's built
 
-Every `agents/<name>/agent.md` is already a valid Claude Code subagent (it ships with frontmatter):
+Each agent is stored **once** as a canonical Markdown file with frontmatter:
 
-```bash
-cp agents/gordon-ramsay/agent.md ~/.claude/agents/gordon-ramsay.md
 ```
+agents/<slug>/agent.md     # name + description + system prompt
+teams/<id>.json            # which agents belong to a team
+```
+
+The CLI's **adapters** transform that canonical form into each tool's required format and path
+(verified against each tool's current docs). One source of truth, six output targets.
+
+Everything is generated from a single file — `scripts/generate.py` defines the full roster and
+teams, then writes `agents/` and `teams/`. To add or edit agents, edit that script and run it.
 
 ## 🤝 Contributing
 
-**Add your own agent!** The roster is always open.
-
 1. Fork this repo
-2. Create `agents/your-agent/agent.md` with `Personality`, `Vocabulary`, `Example`, `Rules`
-3. Add a description in `scripts/add_frontmatter.py`, then run `python scripts/add_frontmatter.py`
-4. Add them to one or more teams in `scripts/build_teams.py`, then run `python scripts/build_teams.py`
-5. Submit a PR — if it makes us smile **and** teaches something, you're in
+2. Add an entry to `AGENTS` in [`scripts/generate.py`](scripts/generate.py) (title, role, responsibilities, principles, description)
+3. Add the slug to one or more teams in `TEAMS`
+4. Run `python scripts/generate.py` and commit the generated files
+5. Open a PR
 
 ## 🔗 Related
 
-- [**claude-crew**](https://github.com/hlsitechio/claude-crew) — Serious production agents (code reviewer, security auditor, DevOps)
-- [**claude-memory**](https://github.com/hlsitechio/claude-memory) — Persistent memory for Claude Code sessions
+- [**claude-crew**](https://github.com/hlsitechio/claude-crew) — production agent presets for Claude Code
+- [**claude-memory**](https://github.com/hlsitechio/claude-memory) — persistent memory for Claude Code sessions
 
 ---
 
 <div align="center">
 
-**70 agents. 15 swarms. One command.**
+**60 agents. 10 teams. One command.**
 
-*Technically accurate. Full of character. Ready for Claude Code, Codex, OpenCode, Cursor & Pi.*
+*Real engineering specialists, ready for Claude Code, Codex, OpenCode, Cursor & Pi.*
 
 MIT License
 

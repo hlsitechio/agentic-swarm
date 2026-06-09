@@ -1,108 +1,73 @@
 {
   "teams": [
     {
-      "id": "roast-squad",
-      "emoji": "🔥",
-      "name": "The Roast Squad",
-      "tagline": "Brutal, high-standards code review",
-      "size": 8
+      "id": "architecture",
+      "emoji": "🏛️",
+      "name": "Architecture Guild",
+      "tagline": "Design systems, APIs & boundaries",
+      "size": 6
     },
     {
-      "id": "wise-council",
-      "emoji": "🧠",
-      "name": "The Wise Council",
-      "tagline": "Architecture & deep guidance",
-      "size": 8
+      "id": "backend",
+      "emoji": "⚙️",
+      "name": "Backend Squad",
+      "tagline": "Server-side services & data",
+      "size": 6
     },
     {
-      "id": "comfort-crew",
-      "emoji": "🤗",
-      "name": "The Comfort Crew",
-      "tagline": "Gentle, supportive, beginner-friendly",
-      "size": 7
-    },
-    {
-      "id": "hype-squad",
-      "emoji": "💪",
-      "name": "The Hype Squad",
-      "tagline": "Motivation & relentless energy",
-      "size": 8
-    },
-    {
-      "id": "detective-agency",
-      "emoji": "🔍",
-      "name": "The Detective Agency",
-      "tagline": "Bug hunting & investigation",
-      "size": 7
-    },
-    {
-      "id": "comedy-club",
-      "emoji": "😂",
-      "name": "The Comedy Club",
-      "tagline": "Pure levity while you code",
-      "size": 9
-    },
-    {
-      "id": "narrators",
-      "emoji": "🎙️",
-      "name": "The Narrators",
-      "tagline": "Turn your session into a broadcast",
-      "size": 7
-    },
-    {
-      "id": "creative-studio",
+      "id": "frontend",
       "emoji": "🎨",
-      "name": "The Creative Studio",
-      "tagline": "Code as art — verse, rhyme & calm",
-      "size": 5
+      "name": "Frontend Squad",
+      "tagline": "UI, client logic & UX delivery",
+      "size": 6
     },
     {
-      "id": "middle-earth",
-      "emoji": "⚔️",
-      "name": "The Fellowship",
-      "tagline": "Middle-earth assembles",
-      "size": 4
+      "id": "languages",
+      "emoji": "🔤",
+      "name": "Language Pros",
+      "tagline": "Deep per-language expertise",
+      "size": 6
     },
     {
-      "id": "hogwarts",
-      "emoji": "🧙",
-      "name": "Hogwarts Faculty",
-      "tagline": "Wizarding code review",
-      "size": 4
+      "id": "quality",
+      "emoji": "✅",
+      "name": "Quality Crew",
+      "tagline": "Correctness, tests & performance",
+      "size": 6
     },
     {
-      "id": "avengers",
-      "emoji": "🦸",
-      "name": "The Avengers",
-      "tagline": "Earth's mightiest engineers",
-      "size": 4
+      "id": "security",
+      "emoji": "🔐",
+      "name": "Security Team",
+      "tagline": "AppSec, offense & supply chain",
+      "size": 6
     },
     {
-      "id": "galactic-order",
-      "emoji": "🌌",
-      "name": "The Galactic Order",
-      "tagline": "A galaxy far, far away",
-      "size": 4
+      "id": "devops",
+      "emoji": "🚀",
+      "name": "DevOps & SRE",
+      "tagline": "Ship, scale & operate",
+      "size": 6
     },
     {
-      "id": "westeros",
-      "emoji": "🐉",
-      "name": "The Westeros Court",
-      "tagline": "Code is coming",
-      "size": 4
+      "id": "data-ai",
+      "emoji": "🧠",
+      "name": "Data & AI",
+      "tagline": "Pipelines, models & LLM apps",
+      "size": 6
     },
     {
-      "id": "norse-raiders",
-      "emoji": "⚡",
-      "name": "The Norse Raiders",
-      "tagline": "Sail to production at dawn",
-      "size": 3
+      "id": "product-docs",
+      "emoji": "📋",
+      "name": "Product & Docs",
+      "tagline": "Plan, document & communicate",
+      "size": 6
     },
     {
-      "id": "world-tour",
-      "emoji": "🌍",
-      "name": "The World Tour",
-      "tagline": "Accents & attitudes from everywhere",
+      "id": "specialists",
+      "emoji": "🧩",
+      "name": "Specialists",
+      "tagline": "Targeted, high-leverage expertise",
       "size": 6
     }
   ]

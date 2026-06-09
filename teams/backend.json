@@ -1,0 +1,14 @@
+{
+  "id": "backend",
+  "emoji": "⚙️",
+  "name": "Backend Squad",
+  "tagline": "Server-side services & data",
+  "members": [
+    "backend-engineer",
+    "microservices-engineer",
+    "database-engineer",
+    "graphql-engineer",
+    "realtime-engineer",
+    "caching-engineer"
+  ]
+}

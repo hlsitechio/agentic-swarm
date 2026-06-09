@@ -5,9 +5,9 @@
  * Zero dependencies. Works via:  npx github:hlsitechio/agentic-swarm <command>
  *
  * Commands:
- *   list [team]                 List all teams, or the members of one team
- *   add <name...> [flags]       Install character(s) and/or whole team(s)
- *   remove <name...> [flags]    Uninstall character(s)/team(s)
+ *   list [team]                 List all teams, or the agents in one team
+ *   add <name...> [flags]       Install agent(s) and/or whole team(s)
+ *   remove <name...> [flags]    Uninstall agent(s)/team(s)
  *   help                        Show usage
  *
  * Flags:
@@ -185,9 +185,9 @@ function cmdList(positional, teams) {
   for (const t of Object.values(teams)) {
     console.log(`  ${t.emoji}  ${cyan(t.id.padEnd(18))} ${bold(t.name.padEnd(22))} ${dim(t.tagline)} ${dim("· " + t.members.length)}`);
   }
-  console.log(`\n  ${dim("List a team's members:")} npx github:hlsitechio/agentic-swarm list roast-squad`);
-  console.log(`  ${dim("Install a team:       ")} npx github:hlsitechio/agentic-swarm add roast-squad`);
-  console.log(`  ${dim("Install one character:")} npx github:hlsitechio/agentic-swarm add gandalf\n`);
+  console.log(`\n  ${dim("List a team's agents:  ")} npx github:hlsitechio/agentic-swarm list security`);
+  console.log(`  ${dim("Install a team:       ")} npx github:hlsitechio/agentic-swarm add security`);
+  console.log(`  ${dim("Install one agent:    ")} npx github:hlsitechio/agentic-swarm add code-reviewer\n`);
 }
 
 function ensureScope(target, flags) {
@@ -210,7 +210,7 @@ function cmdAdd(positional, teams, characters, flags) {
   const { slugs, unknown } = resolveSlugs(positional, teams, characters);
   if (unknown.length) {
     console.log(red(`  unknown: ${unknown.join(", ")}`));
-    console.log(dim("  run 'list' to see available teams and characters."));
+    console.log(dim("  run 'list' to see available teams and agents."));
   }
   if (!slugs.length) {
     console.log(red("  nothing to install."));
@@ -281,9 +281,9 @@ ${bold("Usage")}
   npx github:hlsitechio/agentic-swarm <command> [names...] [flags]
 
 ${bold("Commands")}
-  list [team]            List all teams, or one team's members
-  add  <name...>         Install character(s) and/or whole team(s)
-  remove <name...>       Uninstall character(s)/team(s)
+  list [team]            List all teams, or one team's agents
+  add  <name...>         Install agent(s) and/or whole team(s)
+  remove <name...>       Uninstall agent(s)/team(s)
   help                   Show this help
 
 ${bold("Flags")}
@@ -296,10 +296,10 @@ ${bold("Flags")}
 
 ${bold("Examples")}
   npx github:hlsitechio/agentic-swarm list
-  npx github:hlsitechio/agentic-swarm add roast-squad
-  npx github:hlsitechio/agentic-swarm add gandalf yoda --target=opencode
-  npx github:hlsitechio/agentic-swarm add wise-council --target=claude,cursor --project
-  npx github:hlsitechio/agentic-swarm remove comedy-club
+  npx github:hlsitechio/agentic-swarm add security
+  npx github:hlsitechio/agentic-swarm add code-reviewer debugger --target=opencode
+  npx github:hlsitechio/agentic-swarm add backend --target=claude,cursor --project
+  npx github:hlsitechio/agentic-swarm remove data-ai
 `);
 }
 

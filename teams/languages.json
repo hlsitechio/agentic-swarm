@@ -1,0 +1,14 @@
+{
+  "id": "languages",
+  "emoji": "🔤",
+  "name": "Language Pros",
+  "tagline": "Deep per-language expertise",
+  "members": [
+    "python-pro",
+    "typescript-pro",
+    "go-pro",
+    "rust-pro",
+    "java-pro",
+    "csharp-pro"
+  ]
+}

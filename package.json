@@ -1,7 +1,7 @@
 {
   "name": "agentic-swarm",
   "version": "2.0.0",
-  "description": "Deployable swarms of specialist AI agents — organized into teams, installed with one command. Claude Code, Codex, OpenCode, Cursor & Pi.",
+  "description": "60 specialist software-engineering AI agents, organized into 10 teams, installed with one command into Claude Code, Codex, OpenCode, Cursor & Pi.",
   "bin": {
     "agentic-swarm": "bin/cli.js"
   },

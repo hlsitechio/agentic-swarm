@@ -1,0 +1,14 @@
+{
+  "id": "quality",
+  "emoji": "✅",
+  "name": "Quality Crew",
+  "tagline": "Correctness, tests & performance",
+  "members": [
+    "code-reviewer",
+    "qa-engineer",
+    "test-automation-engineer",
+    "performance-engineer",
+    "refactoring-specialist",
+    "debugger"
+  ]
+}

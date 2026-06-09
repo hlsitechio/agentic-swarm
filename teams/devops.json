@@ -1,0 +1,14 @@
+{
+  "id": "devops",
+  "emoji": "🚀",
+  "name": "DevOps & SRE",
+  "tagline": "Ship, scale & operate",
+  "members": [
+    "devops-engineer",
+    "site-reliability-engineer",
+    "kubernetes-engineer",
+    "ci-cd-engineer",
+    "terraform-engineer",
+    "observability-engineer"
+  ]
+}

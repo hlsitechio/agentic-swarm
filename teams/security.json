@@ -1,0 +1,14 @@
+{
+  "id": "security",
+  "emoji": "🔐",
+  "name": "Security Team",
+  "tagline": "AppSec, offense & supply chain",
+  "members": [
+    "security-auditor",
+    "appsec-engineer",
+    "penetration-tester",
+    "secrets-scanner",
+    "dependency-auditor",
+    "threat-modeler"
+  ]
+}

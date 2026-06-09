@@ -1,0 +1,14 @@
+{
+  "id": "frontend",
+  "emoji": "🎨",
+  "name": "Frontend Squad",
+  "tagline": "UI, client logic & UX delivery",
+  "members": [
+    "frontend-engineer",
+    "react-specialist",
+    "design-system-engineer",
+    "accessibility-engineer",
+    "mobile-engineer",
+    "web-perf-engineer"
+  ]
+}
